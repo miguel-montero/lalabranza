@@ -83,6 +83,12 @@ generalization work is explicitly out of scope here.
   deployed alongside it in a `/webdb`-style directory, following the same
   convention already used in the Lista Hoteles project
   (`webdb-endpoint.php`).
+- **Images:** `next/image`'s optimization endpoint requires a Node server,
+  which doesn't exist under static export on HostGator shared hosting.
+  `next.config` needs `images: { unoptimized: true }`, and the real
+  estate/gallery photos need to be pre-optimized (resized, converted to
+  WebP) as a build step — e.g. a `sharp` script run before `next build` —
+  rather than relying on Next to optimize them at request time.
 
 This combination was chosen over two alternatives:
 
@@ -228,13 +234,61 @@ business context above rather than generic "rustic restaurant" defaults.
 - **Hero:** a real photo of the estate at golden hour (table set outdoors,
   land and, if available, alpacas) rather than a studio food shot or a
   generic stat/gradient hero — the estate itself is the strongest asset
-  competitors can't replicate.
+  competitors can't replicate. This matches the "Hero-Centric Design"
+  pattern (full-bleed hero → single value-prop strip → proof → primary
+  CTA), verified via the `ui-ux-pro-max` skill's landing-pattern search.
+
+### Color → role mapping (WCAG-checked)
+
+The six tokens above aren't interchangeable as text colors — contrast was
+computed against both surfaces, not assumed:
+
+| Role | Color | Against | Ratio | Verdict |
+|---|---|---|---|---|
+| Background | Fibra Cruda `#D8CDBC` | — | — | base surface |
+| Text (default) | Piedra Volcánica `#2B2622` | on Fibra Cruda | 9.5:1 | AAA — safe everywhere |
+| Primary accent / CTA fill | Vino Tinto `#4E1B26` | text on Fibra Cruda | 8.9:1 | AAA |
+| On-primary (text on Vino Tinto buttons) | Fibra Cruda | on Vino Tinto | 8.9:1 | AAA — keep it warm, not stark white |
+| Cobre Viejo `#8A5A34` | — | on Fibra Cruda / Piedra Volcánica | 3.7:1 / 2.6:1 | Large text/icons/borders only — fails as body text on either surface |
+| Lana Dorada `#B8935A` | — | on Fibra Cruda / Piedra Volcánica | 1.8:1 / 5.2:1 | Usable as text only on the dark surface (e.g. footer); decorative-only on light bg |
+| Viña `#3D4A32` | — | on Fibra Cruda / Piedra Volcánica | 6.0:1 / 1.6:1 | Usable as text only on the light surface |
+
+### Type & spacing scale
+
+- Base 16px, line-height 1.5–1.6 for Lora body copy.
+- Fraunces (display): ~36px mobile h1 up to ~64–72px desktop h1.
+- Space Grotesk (labels/course numbers): 12–14px, uppercase, wide tracking.
+- Spacing: generous/spacious scale (24–96px) on public marketing pages —
+  this is an experiential estate site, not a dashboard. The admin
+  reservations page may use a tighter, denser scale since it's a utility
+  screen, not brand-critical.
+
+### Furrow-line signature — implementation
+
+Inline SVG component (`<FurrowDivider />`), not a background image: 2–4
+slightly-varied horizontal strokes. Full-opacity Piedra Volcánica or Vino
+Tinto for section dividers; ~15–20% opacity Cobre Viejo for the faint
+hero-background version. Static by default; an optional subtle "etch"
+reveal-on-scroll must be gated behind `prefers-reduced-motion:
+no-preference` so it degrades to static rather than breaking.
+
+### Reservation form & admin list — component guidance
+
+Current shadcn CLI uses `Field` / `FieldLabel` / `FieldError` primitives
+(not the older `FormField` pattern) with either React Hook Form+Zod or
+TanStack Form for validation. Reservation form: `Field` +
+`Input`/`Select`/`Calendar`+`Popover` for date, `Button` with an explicit
+loading state. Accessibility requirement (High severity, from
+`ui-ux-pro-max`'s UX guidelines): a focusable error summary
+(`role="alert"`, linking to each invalid field) in *addition to* inline
+per-field errors, not instead of them. Admin list: `Table` + `Badge` for
+status, colored using the verified pairs above rather than raw hex.
 
 ## Open items for implementation time (not design blockers)
 
 - Exact reservation confirmation channel (email send vs. "we'll call you")
   and whether v1 needs outbound email at all.
 - Exact `hours` JSON shape and how it renders across locales.
-- Full component-level UI styling (shadcn/ui theming, spacing/type scale,
-  accessibility details) — next step via the `ui-ux-pro-max` skill,
-  applying the tokens above rather than deciding new ones.
+- Whether the admin reservations page gets its own dark surface (using
+  Piedra Volcánica/Fibra Cruda/Lana Dorada) — not required for v1, since
+  it's a utility screen rather than brand-critical.
