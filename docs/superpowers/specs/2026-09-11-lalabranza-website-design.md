@@ -47,18 +47,6 @@ generalization work is explicitly out of scope here.
 - Keep the data model tenant-scoped so a future second restaurant — or a
   future SaaS product — doesn't require re-architecting.
 
-## Goals
-
-- Give visitors the information they need to decide to visit: menu, photos,
-  location, hours, contact.
-- Let visitors request a table reservation online.
-- Let restaurant staff see and manage the day's reservations without needing
-  direct database access.
-- Run entirely on infrastructure already owned (HostGator shared/cPanel
-  hosting) with no new paid vendor.
-- Keep the data model tenant-scoped so a future second restaurant — or a
-  future SaaS product — doesn't require re-architecting.
-
 ## Non-goals (v1)
 
 - Online ordering / delivery.
