@@ -2,13 +2,50 @@
 
 ## Summary
 
-A bilingual (Spanish/English) marketing website for La Labranza, a single
-restaurant, with an in-house table-reservation feature. The data model is
-tenant-scoped from day one (every table keyed by `restaurant_id`) so that a
-second, third, or tenth restaurant can be added later without a schema
-rewrite — but v1 ships with exactly one restaurant and no multi-tenant
-product surface (no signup flow, no billing, no per-tenant admin
-provisioning). That generalization work is explicitly out of scope here.
+A bilingual (English/Spanish) marketing website for La Labranza — the
+live-cooking, tableside-storytelling restaurant of Viña La Quirinca, a
+boutique winery estate with alpacas on the grounds — with an in-house
+table-reservation feature. Traditional Chilean cuisine is presented as
+theater: dishes explained and cooked in front of guests, closer to an
+upscale Chilean teppanyaki format than a casual sit-down meal. The primary
+audience is American and European travelers staying at 4–5 star hotels in
+Santiago — an affluent, mostly English-speaking, experienced-traveler
+market, not local walk-in diners. The data model is tenant-scoped from day
+one (every table keyed by `restaurant_id`) so that a second, third, or
+tenth restaurant can be added later without a schema rewrite — but v1
+ships with exactly one restaurant and no multi-tenant product surface (no
+signup flow, no billing, no per-tenant admin provisioning). That
+generalization work is explicitly out of scope here.
+
+## Business & brand context
+
+- La Labranza is part of Viña La Quirinca, a boutique winery. The site is
+  branded as La Labranza first, with clear "part of Viña La Quirinca"
+  messaging — the restaurant is the star, the winery is the credible
+  context behind it.
+- The winery's own wine is a real, ownable brand asset (used directly in
+  the visual direction — see below), as are the alpacas on the estate.
+- The dining format is experiential/theatrical (live cooking, tableside
+  narration of dishes) — copy throughout the site, especially Reservations
+  and About, should set that expectation rather than reading like a
+  standard restaurant listing.
+- Target audience is affluent international travelers who have likely
+  already experienced comparable wine-country dining elsewhere (Napa,
+  Tuscany) — the bar for perceived sophistication is high; content and
+  design should read as "worth the drive from Santiago," not merely
+  pleasant.
+
+## Goals
+
+- Give visitors the information they need to decide to visit: menu, photos,
+  location, hours, contact.
+- Let visitors request a table reservation online.
+- Let restaurant staff see and manage the day's reservations without needing
+  direct database access.
+- Run entirely on infrastructure already owned (HostGator shared/cPanel
+  hosting) with no new paid vendor.
+- Keep the data model tenant-scoped so a future second restaurant — or a
+  future SaaS product — doesn't require re-architecting.
 
 ## Goals
 
@@ -141,10 +178,12 @@ photos), About/Location (real address, map embed), Contact.
 All pages except Reservations and the admin view are static, built at
 deploy time via Next.js static export.
 
-Bilingual support (Spanish default, English available) is implemented via
-locale-prefixed static routes (`/es/...`, `/en/...`) generated at build
+Bilingual support (English default, Spanish available) is implemented via
+locale-prefixed static routes (`/en/...`, `/es/...`) generated at build
 time — compatible with static export — with a locale toggle in the site
-header.
+header. English is the default because the primary audience is
+English-speaking international travelers, not local Spanish-speaking
+diners.
 
 ## Content readiness
 
@@ -164,10 +203,38 @@ header.
 - E2E/browser testing of the full booking flow is not required for v1 but
   can be added later (e.g. Playwright) if the flow grows more complex.
 
+## Visual & brand direction
+
+Worked out using the `frontend-design` skill process, grounded in the
+business context above rather than generic "rustic restaurant" defaults.
+
+- **Color:** `Fibra Cruda` `#D8CDBC` (undyed alpaca-wool background),
+  `Piedra Volcánica` `#2B2622` (volcanic stone, text), `Vino Tinto`
+  `#4E1B26` (the estate's own wine — primary accent), `Cobre Viejo`
+  `#8A5A34` (aged copper, secondary), `Lana Dorada` `#B8935A` (warm fiber
+  highlight), `Viña` `#3D4A32` (vineyard green, tertiary). The wine-red
+  primary accent is deliberate: it's literally what the estate produces,
+  not a generic "earthy" color choice.
+- **Type:** Fraunces (display — warm, high-contrast serif, reads as
+  elegant/editorial rather than templated), Lora (body — carries
+  storytelling copy, since dishes are narrated tableside and the web copy
+  should share that voice), Space Grotesk (labels/course numbers — a
+  modern-artisanal, wine-label quality, small caps with wide tracking).
+- **Signature element — the furrow line:** a precise, etched (not
+  hand-drawn-rustic) parallel-line motif used as the section-divider
+  device throughout, and faintly in the hero background. It carries two
+  true meanings at once: tilled fields (*labranza*) and vineyard rows —
+  specific to this estate, not decorative.
+- **Hero:** a real photo of the estate at golden hour (table set outdoors,
+  land and, if available, alpacas) rather than a studio food shot or a
+  generic stat/gradient hero — the estate itself is the strongest asset
+  competitors can't replicate.
+
 ## Open items for implementation time (not design blockers)
 
 - Exact reservation confirmation channel (email send vs. "we'll call you")
   and whether v1 needs outbound email at all.
 - Exact `hours` JSON shape and how it renders across locales.
-- Visual design direction — deferred to `ui-ux-pro-max` skill guidance
-  during implementation, not decided here.
+- Full component-level UI styling (shadcn/ui theming, spacing/type scale,
+  accessibility details) — next step via the `ui-ux-pro-max` skill,
+  applying the tokens above rather than deciding new ones.
