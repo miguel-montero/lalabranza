@@ -38,13 +38,13 @@ export function AdminLoginForm() {
         <label htmlFor="username" className="block font-label text-sm">
           Username
         </label>
-        <Input id="username" name="username" />
+        <Input id="username" name="username" autoComplete="username" />
       </div>
       <div className="mb-4">
         <label htmlFor="password" className="block font-label text-sm">
           Password
         </label>
-        <Input id="password" name="password" type="password" />
+        <Input id="password" name="password" type="password" autoComplete="current-password" />
       </div>
       <Button type="submit" disabled={submitting}>
         {submitting ? "Logging in…" : "Log in"}

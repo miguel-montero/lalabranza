@@ -10,12 +10,13 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 // Confirmed seating times, Monday–Friday. Keep in sync with
-// backend/migrations/002_seed.sql's capacity_rules seed.
-const TIME_SLOTS = ["11:00:00", "14:00:00"];
+// backend/migrations/002_seed.sql's capacity_rules seed. Single source of
+// truth for both the <select> options below and the zod validation.
+const TIME_SLOTS = ["11:00:00", "14:00:00"] as const;
 
 const schema = z.object({
   date: z.string().min(1),
-  timeSlot: z.enum(["11:00:00", "14:00:00"]),
+  timeSlot: z.enum(TIME_SLOTS),
   partySize: z.coerce.number().int().min(1).max(20),
   name: z.string().min(1),
   email: z.string().email(),
