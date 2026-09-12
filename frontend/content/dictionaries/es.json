@@ -39,6 +39,9 @@
     "noCapacity": "Ese horario está completo — prueba con otro.",
     "genericError": "Algo salió mal — inténtalo de nuevo o contáctanos directamente."
   },
+  "contact": {
+    "eyebrow": "Contáctanos"
+  },
   "footer": {
     "partOf": "Parte de Viña La Quirinca",
     "rights": "Todos los derechos reservados."

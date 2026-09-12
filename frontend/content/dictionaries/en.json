@@ -39,6 +39,9 @@
     "noCapacity": "That seating is fully booked — try another time.",
     "genericError": "Something went wrong — please try again or contact us directly."
   },
+  "contact": {
+    "eyebrow": "Get in Touch"
+  },
   "footer": {
     "partOf": "Part of Viña La Quirinca",
     "rights": "All rights reserved."
