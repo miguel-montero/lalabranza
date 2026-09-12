@@ -36,3 +36,15 @@ export async function createReservation(
   });
   return res.json();
 }
+
+export async function adminLogin(
+  username: string,
+  password: string,
+): Promise<{ status: string } | { error: string }> {
+  const res = await fetch("/webdb/admin_login.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+  return res.json();
+}
