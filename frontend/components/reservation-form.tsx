@@ -9,11 +9,14 @@ import { checkAvailability, createReservation } from "@/lib/api";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
-const TIME_SLOTS = ["13:00:00", "20:00:00"];
+// Placeholder seating times within the confirmed Mon–Fri, 10:00–17:00
+// window — pending confirmation of the actual seating schedule. Keep in
+// sync with backend/migrations/002_seed.sql's capacity_rules seed.
+const TIME_SLOTS = ["11:00:00", "14:00:00"];
 
 const schema = z.object({
   date: z.string().min(1),
-  timeSlot: z.enum(["13:00:00", "20:00:00"]),
+  timeSlot: z.enum(["11:00:00", "14:00:00"]),
   partySize: z.coerce.number().int().min(1),
   name: z.string().min(1),
   email: z.string().email(),

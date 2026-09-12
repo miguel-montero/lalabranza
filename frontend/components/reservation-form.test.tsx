@@ -33,7 +33,7 @@ describe("ReservationForm", () => {
     render(<ReservationForm dictionary={dict} />);
 
     await user.type(screen.getByLabelText(dict.reservations.dateLabel), "2026-09-17");
-    await user.selectOptions(screen.getByLabelText(dict.reservations.timeLabel), "13:00:00");
+    await user.selectOptions(screen.getByLabelText(dict.reservations.timeLabel), "11:00:00");
     await user.type(screen.getByLabelText(dict.reservations.partySizeLabel), "2");
     await user.type(screen.getByLabelText(dict.reservations.nameLabel), "Jane Doe");
     await user.type(screen.getByLabelText(dict.reservations.emailLabel), "jane@example.com");
@@ -57,7 +57,7 @@ describe("ReservationForm", () => {
     render(<ReservationForm dictionary={dict} />);
 
     await user.type(screen.getByLabelText(dict.reservations.dateLabel), "2026-09-17");
-    await user.selectOptions(screen.getByLabelText(dict.reservations.timeLabel), "13:00:00");
+    await user.selectOptions(screen.getByLabelText(dict.reservations.timeLabel), "11:00:00");
     await user.type(screen.getByLabelText(dict.reservations.partySizeLabel), "4");
     await user.type(screen.getByLabelText(dict.reservations.nameLabel), "Jane Doe");
     await user.type(screen.getByLabelText(dict.reservations.emailLabel), "jane@example.com");
@@ -80,7 +80,7 @@ describe("ReservationForm", () => {
     render(<ReservationForm dictionary={dict} />);
 
     await user.type(screen.getByLabelText(dict.reservations.dateLabel), "2026-09-17");
-    await user.selectOptions(screen.getByLabelText(dict.reservations.timeLabel), "13:00:00");
+    await user.selectOptions(screen.getByLabelText(dict.reservations.timeLabel), "11:00:00");
     await user.type(screen.getByLabelText(dict.reservations.partySizeLabel), "2");
     await user.type(screen.getByLabelText(dict.reservations.nameLabel), "Jane Doe");
     await user.type(screen.getByLabelText(dict.reservations.emailLabel), "jane@example.com");
@@ -101,7 +101,7 @@ describe("ReservationForm", () => {
     render(<ReservationForm dictionary={dict} />);
 
     await user.type(screen.getByLabelText(dict.reservations.dateLabel), "2026-09-17");
-    await user.selectOptions(screen.getByLabelText(dict.reservations.timeLabel), "13:00:00");
+    await user.selectOptions(screen.getByLabelText(dict.reservations.timeLabel), "11:00:00");
     await user.type(screen.getByLabelText(dict.reservations.partySizeLabel), "2");
     await user.type(screen.getByLabelText(dict.reservations.nameLabel), "Jane Doe");
     await user.type(screen.getByLabelText(dict.reservations.emailLabel), "jane@example.com");
