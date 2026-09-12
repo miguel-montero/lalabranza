@@ -13,13 +13,22 @@
   "home": {
     "eyebrow": "Viña La Quirinca",
     "headline": "La Labranza",
-    "subhead": "Una experiencia junto a su mesa — cocina chilena preparada, explicada y maridada con vino frente a usted.",
-    "cta": "Reserva tu mesa",
+    "subhead": "Una experiencia chilena junto a tu mesa, en el Valle del Maipo. Cocina chilena preparada, explicada y servida frente a ti, acompañada por vinos elaborados aquí, en Viña La Quirinca.",
+    "cta": "Reserva tu lugar",
     "valueProp": "Cocina tradicional chilena, contada con historia. Cada plato se prepara y presenta en su mesa, acompañado de vinos elaborados aquí, en Viña La Quirinca.",
-    "highlightsEyebrow": "El Fundo",
-    "highlight1": "Vinos de Viña La Quirinca",
-    "highlight2": "Del campo a su mesa",
-    "highlight3": "Sabores chilenos, preparados frente a usted"
+    "originTitle": "Un nombre que nace de la tierra",
+    "originBody": "La Labranza habla de trabajar y cultivar la tierra. Y difícilmente podría existir un nombre más apropiado para una experiencia en el Valle del Maipo: el propio nombre Maipo proviene del mapudungun maipun, asociado a la tierra trabajada o labrada. Aquí, el paisaje también forma parte de la comida. Los viñedos crecen a tu alrededor, los ingredientes chilenos se transforman en preparaciones recién salidas del fuego y los vinos que llegan a la mesa se elaboran en la misma viña que estás visitando. La Labranza reúne todo en una misma historia: la tierra, el viñedo, la cocina chilena y las personas que se sientan a compartirla.",
+    "landTitle": "De la tierra a tu mesa",
+    "landBody": "Lo que pruebas aquí está conectado con el lugar que te rodea: el viñedo, los productos de la zona, el fuego y los vinos de Viña La Quirinca.",
+    "foodTitle": "Sabores chilenos, preparados frente a ti",
+    "foodBody": "Esto es más que una parada para almorzar. Los platos se preparan y presentan frente a ti, recién salidos del fuego, mientras en la mesa se comparte la historia de sus ingredientes y preparaciones. La idea es disfrutar sin apuro: acompañar la comida con vino, un pisco sour de la casa o una cerveza local, y compartir el momento con quienes viniste — o con quienes conozcas durante la experiencia.",
+    "wineTitle": "Vinos hechos en el mismo lugar que estás visitando",
+    "wineBody": "La Labranza es parte de Viña La Quirinca. Los vinos que acompañan la experiencia se elaboran aquí, en la misma viña, conectando directamente el paisaje que ves con lo que llega a tu copa.",
+    "atmosphereEyebrow": "El Fundo",
+    "visitTitle": "Horario y Ubicación",
+    "visitCta": "Ver todos los detalles",
+    "closingTitle": "Un sabor de Chile, con raíces en el Maipo.",
+    "closingBody": "Ven por la comida y el vino. Llévate una conexión más cercana con la tierra, el valle y las historias detrás de lo que probaste."
   },
   "reservations": {
     "title": "Reserva una mesa",

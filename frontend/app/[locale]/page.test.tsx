@@ -11,10 +11,11 @@ describe("HomePage", () => {
     render(Page);
     expect(screen.getByRole("heading", { name: "La Labranza" })).toBeInTheDocument();
     expect(screen.getByText(dict.home.subhead)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Reserve your seating" })).toHaveAttribute(
-      "href",
-      "/en/reservations",
-    );
+    const ctaLinks = screen.getAllByRole("link", { name: "Reserve your seating" });
+    expect(ctaLinks.length).toBeGreaterThanOrEqual(1);
+    for (const link of ctaLinks) {
+      expect(link).toHaveAttribute("href", "/en/reservations");
+    }
   });
 
   it("renders the hero photo with descriptive alt text", async () => {

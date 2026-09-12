@@ -13,13 +13,22 @@
   "home": {
     "eyebrow": "Viña La Quirinca",
     "headline": "La Labranza",
-    "subhead": "A tableside experience — Chilean cuisine prepared, explained, and paired with wine right in front of you.",
+    "subhead": "A tableside Chilean experience in the Maipo Valley. Chilean cuisine prepared, explained and served in front of you, paired with wines made here at Viña La Quirinca.",
     "cta": "Reserve your seating",
     "valueProp": "Traditional Chilean cuisine with a story to tell. Each dish is prepared and presented at your table, paired with wines made here at Viña La Quirinca.",
-    "highlightsEyebrow": "The Estate",
-    "highlight1": "Wines from Viña La Quirinca",
-    "highlight2": "From the farm to your table",
-    "highlight3": "Chilean flavors, prepared right in front of you"
+    "originTitle": "A name born from the land",
+    "originBody": "La Labranza means the working and tilling of the land. There could hardly be a more fitting name for an experience in the Maipo Valley: the name Maipo itself comes from the Mapudungun maipun, associated with worked or tilled land. Here, the landscape is part of the meal. The vineyards grow around you, Chilean ingredients become dishes prepared fresh from the fire, and the wines poured at the table are made on the estate you are visiting. La Labranza brings that story together — the land, the vineyard, Chilean food and the people gathered around the table.",
+    "landTitle": "From the land to your table",
+    "landBody": "What you taste here is connected to the place around you — the vineyard, the local produce, the fire and the wines of Viña La Quirinca.",
+    "foodTitle": "Chilean flavors, prepared in front of you",
+    "foodBody": "This is more than a lunch stop. The dishes are prepared and presented in front of you, fresh from the fire, while the story behind the ingredients and recipes is shared at the table. Take your time, enjoy the wine, a house pisco sour or a local beer, and share the experience with the people you came with — or the ones you meet along the way.",
+    "wineTitle": "Wine made where you are sitting",
+    "wineBody": "La Labranza is part of Viña La Quirinca. The wines served with the experience are made here on the estate, creating a direct connection between the vineyard outside and what is poured into your glass.",
+    "atmosphereEyebrow": "The Estate",
+    "visitTitle": "Hours & Location",
+    "visitCta": "Full location details",
+    "closingTitle": "A taste of Chile, rooted in Maipo.",
+    "closingBody": "Come for the food and wine. Leave with a closer connection to the land, the valley and the stories behind what you tasted."
   },
   "reservations": {
     "title": "Reserve a seating",
