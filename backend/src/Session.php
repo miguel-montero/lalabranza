@@ -7,6 +7,9 @@ final class Session
     public static function start(): void
     {
         if (session_status() !== PHP_SESSION_ACTIVE) {
+            // TODO: set 'secure' => true once served over HTTPS in production —
+            // omitted here since local dev uses plain HTTP.
+            session_set_cookie_params(['httponly' => true, 'samesite' => 'Lax']);
             session_start();
         }
     }

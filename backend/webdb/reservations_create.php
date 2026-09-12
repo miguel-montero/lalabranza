@@ -26,13 +26,19 @@ $notes = trim($body['notes'] ?? '');
 if (
     !$date || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)
     || !$timeSlot
-    || !$partySize || $partySize < 1
+    || !$partySize || $partySize < 1 || $partySize > 20
     || !$name
     || !filter_var($email, FILTER_VALIDATE_EMAIL)
     || !$phone
 ) {
     http_response_code(422);
     echo json_encode(['error' => 'Missing or invalid reservation fields']);
+    exit;
+}
+
+if (strtotime($date) < strtotime(date('Y-m-d'))) {
+    http_response_code(422);
+    echo json_encode(['error' => 'date cannot be in the past']);
     exit;
 }
 

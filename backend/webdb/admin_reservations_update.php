@@ -25,20 +25,25 @@ if (!$id || !in_array($status, ['confirmed', 'cancelled'], true)) {
     exit;
 }
 
-$pdo = Db::connect();
-$stmt = $pdo->prepare(
-    'UPDATE reservations SET status = :status WHERE id = :id AND restaurant_id = :restaurant_id',
-);
-$stmt->execute([
-    'status' => $status,
-    'id' => $id,
-    'restaurant_id' => $session['restaurant_id'],
-]);
+try {
+    $pdo = Db::connect();
+    $stmt = $pdo->prepare(
+        'UPDATE reservations SET status = :status WHERE id = :id AND restaurant_id = :restaurant_id',
+    );
+    $stmt->execute([
+        'status' => $status,
+        'id' => $id,
+        'restaurant_id' => $session['restaurant_id'],
+    ]);
 
-if ($stmt->rowCount() === 0) {
-    http_response_code(404);
-    echo json_encode(['error' => 'Reservation not found']);
-    exit;
+    if ($stmt->rowCount() === 0) {
+        http_response_code(404);
+        echo json_encode(['error' => 'Reservation not found']);
+        exit;
+    }
+
+    echo json_encode(['status' => 'ok']);
+} catch (\Throwable $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Internal server error']);
 }
-
-echo json_encode(['status' => 'ok']);

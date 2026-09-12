@@ -23,16 +23,21 @@ if (!$username || !$password) {
     exit;
 }
 
-$pdo = Db::connect();
-$stmt = $pdo->prepare('SELECT id, restaurant_id, password_hash FROM admin_users WHERE username = :username');
-$stmt->execute(['username' => $username]);
-$admin = $stmt->fetch(\PDO::FETCH_ASSOC);
+try {
+    $pdo = Db::connect();
+    $stmt = $pdo->prepare('SELECT id, restaurant_id, password_hash FROM admin_users WHERE username = :username');
+    $stmt->execute(['username' => $username]);
+    $admin = $stmt->fetch(\PDO::FETCH_ASSOC);
 
-if (!$admin || !password_verify($password, $admin['password_hash'])) {
-    http_response_code(401);
-    echo json_encode(['error' => 'Invalid credentials']);
-    exit;
+    if (!$admin || !password_verify($password, $admin['password_hash'])) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Invalid credentials']);
+        exit;
+    }
+
+    Session::login((int) $admin['id'], (int) $admin['restaurant_id']);
+    echo json_encode(['status' => 'ok']);
+} catch (\Throwable $e) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Internal server error']);
 }
-
-Session::login((int) $admin['id'], (int) $admin['restaurant_id']);
-echo json_encode(['status' => 'ok']);
