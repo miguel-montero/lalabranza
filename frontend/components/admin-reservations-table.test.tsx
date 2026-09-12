@@ -59,4 +59,19 @@ describe("AdminReservationsTable", () => {
     await waitFor(() => expect(api.updateReservationStatus).toHaveBeenCalledWith(1, "confirmed"));
     expect(await screen.findByText("confirmed")).toBeInTheDocument();
   });
+
+  it("redirects to /admin/login after logout even if the request fails", async () => {
+    vi.mocked(api.fetchAdminReservations).mockResolvedValue({
+      reservations: [sampleReservation],
+    });
+    vi.mocked(api.adminLogout).mockRejectedValue(new Error("network error"));
+
+    const user = userEvent.setup();
+    render(<AdminReservationsTable />);
+
+    await waitFor(() => expect(screen.getByText("Jane Doe")).toBeInTheDocument());
+    await user.click(screen.getByRole("button", { name: "Log out" }));
+
+    await waitFor(() => expect(pushMock).toHaveBeenCalledWith("/admin/login"));
+  });
 });

@@ -40,7 +40,15 @@ export function AdminReservationsTable() {
   }, []);
 
   const handleLogout = async () => {
-    await adminLogout();
+    // Always redirect to login, even if the logout request itself fails
+    // (network error, non-JSON response) — getting the admin back to a
+    // known screen is more important than the request succeeding
+    // cleanly, and a stale session will still expire on its own.
+    try {
+      await adminLogout();
+    } catch {
+      // Swallow — the redirect below still happens either way.
+    }
     router.push("/admin/login");
   };
 
