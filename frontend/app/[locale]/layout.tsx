@@ -1,9 +1,23 @@
+import type { Metadata } from "next";
 import { locales, getDictionary, type Locale } from "@/content/get-dictionary";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const dict = await getDictionary(locale as Locale);
+  return {
+    title: "La Labranza | Viña La Quirinca",
+    description: dict.meta.description,
+  };
 }
 
 export default async function LocaleLayout({

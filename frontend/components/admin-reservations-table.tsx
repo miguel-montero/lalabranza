@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
+  adminLogout,
   fetchAdminReservations,
   updateReservationStatus,
   type AdminReservation,
@@ -38,6 +39,11 @@ export function AdminReservationsTable() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleLogout = async () => {
+    await adminLogout();
+    router.push("/admin/login");
+  };
+
   const handleUpdate = async (id: number, status: "confirmed" | "cancelled") => {
     const result = await updateReservationStatus(id, status);
     if (!("error" in result)) {
@@ -52,46 +58,53 @@ export function AdminReservationsTable() {
   }
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Name</TableHead>
-          <TableHead>Date</TableHead>
-          <TableHead>Time</TableHead>
-          <TableHead>Party</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Actions</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {reservations.map((r) => (
-          <TableRow key={r.id}>
-            <TableCell>{r.name}</TableCell>
-            <TableCell>{r.reservation_date}</TableCell>
-            <TableCell>{r.time_slot.slice(0, 5)}</TableCell>
-            <TableCell>{r.party_size}</TableCell>
-            <TableCell>
-              <Badge className={STATUS_VARIANT[r.status]}>{r.status}</Badge>
-            </TableCell>
-            <TableCell>
-              {r.status === "pending" && (
-                <>
-                  <Button size="sm" onClick={() => handleUpdate(r.id, "confirmed")}>
-                    Confirm
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => handleUpdate(r.id, "cancelled")}
-                  >
-                    Cancel
-                  </Button>
-                </>
-              )}
-            </TableCell>
+    <>
+      <div className="mb-4 flex justify-end">
+        <Button size="sm" variant="outline" onClick={handleLogout}>
+          Log out
+        </Button>
+      </div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Name</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead>Time</TableHead>
+            <TableHead>Party</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {reservations.map((r) => (
+            <TableRow key={r.id}>
+              <TableCell>{r.name}</TableCell>
+              <TableCell>{r.reservation_date}</TableCell>
+              <TableCell>{r.time_slot.slice(0, 5)}</TableCell>
+              <TableCell>{r.party_size}</TableCell>
+              <TableCell>
+                <Badge className={STATUS_VARIANT[r.status]}>{r.status}</Badge>
+              </TableCell>
+              <TableCell>
+                {r.status === "pending" && (
+                  <>
+                    <Button size="sm" onClick={() => handleUpdate(r.id, "confirmed")}>
+                      Confirm
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => handleUpdate(r.id, "cancelled")}
+                    >
+                      Cancel
+                    </Button>
+                  </>
+                )}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </>
   );
 }

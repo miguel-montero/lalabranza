@@ -70,4 +70,48 @@ describe("ReservationForm", () => {
     });
     expect(api.createReservation).not.toHaveBeenCalled();
   });
+
+  it("shows a generic error message when createReservation returns an error", async () => {
+    vi.mocked(api.checkAvailability).mockResolvedValue({ remaining: 4 });
+    vi.mocked(api.createReservation).mockResolvedValue({ error: "Could not create reservation" });
+
+    const dict = await getDictionary("en");
+    const user = userEvent.setup();
+    render(<ReservationForm dictionary={dict} />);
+
+    await user.type(screen.getByLabelText(dict.reservations.dateLabel), "2026-09-17");
+    await user.selectOptions(screen.getByLabelText(dict.reservations.timeLabel), "13:00:00");
+    await user.type(screen.getByLabelText(dict.reservations.partySizeLabel), "2");
+    await user.type(screen.getByLabelText(dict.reservations.nameLabel), "Jane Doe");
+    await user.type(screen.getByLabelText(dict.reservations.emailLabel), "jane@example.com");
+    await user.type(screen.getByLabelText(dict.reservations.phoneLabel), "+15551234567");
+
+    await user.click(screen.getByRole("button", { name: dict.reservations.submit }));
+
+    await waitFor(() => {
+      expect(screen.getByText(dict.reservations.genericError)).toBeInTheDocument();
+    });
+  });
+
+  it("shows a generic error message when checkAvailability rejects", async () => {
+    vi.mocked(api.checkAvailability).mockRejectedValue(new Error("network error"));
+
+    const dict = await getDictionary("en");
+    const user = userEvent.setup();
+    render(<ReservationForm dictionary={dict} />);
+
+    await user.type(screen.getByLabelText(dict.reservations.dateLabel), "2026-09-17");
+    await user.selectOptions(screen.getByLabelText(dict.reservations.timeLabel), "13:00:00");
+    await user.type(screen.getByLabelText(dict.reservations.partySizeLabel), "2");
+    await user.type(screen.getByLabelText(dict.reservations.nameLabel), "Jane Doe");
+    await user.type(screen.getByLabelText(dict.reservations.emailLabel), "jane@example.com");
+    await user.type(screen.getByLabelText(dict.reservations.phoneLabel), "+15551234567");
+
+    await user.click(screen.getByRole("button", { name: dict.reservations.submit }));
+
+    await waitFor(() => {
+      expect(screen.getByText(dict.reservations.genericError)).toBeInTheDocument();
+    });
+    expect(api.createReservation).not.toHaveBeenCalled();
+  });
 });

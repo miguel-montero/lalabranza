@@ -44,28 +44,32 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
 
   const onSubmit = async (values: FormValues) => {
     setResult("idle");
-    const availability = await checkAvailability(values.date, values.timeSlot);
-    if (availability.remaining < values.partySize) {
-      setResult("no_capacity");
-      return;
-    }
+    try {
+      const availability = await checkAvailability(values.date, values.timeSlot);
+      if (availability.remaining < values.partySize) {
+        setResult("no_capacity");
+        return;
+      }
 
-    const response = await createReservation({
-      date: values.date,
-      timeSlot: values.timeSlot,
-      partySize: values.partySize,
-      name: values.name,
-      email: values.email,
-      phone: values.phone,
-      notes: values.notes,
-    });
+      const response = await createReservation({
+        date: values.date,
+        timeSlot: values.timeSlot,
+        partySize: values.partySize,
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        notes: values.notes,
+      });
 
-    if ("error" in response) {
+      if ("error" in response) {
+        setResult("error");
+        return;
+      }
+
+      setResult("success");
+    } catch {
       setResult("error");
-      return;
     }
-
-    setResult("success");
   };
 
   if (result === "success") {
@@ -103,6 +107,12 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
         </p>
       )}
 
+      {result === "error" && (
+        <p className="mb-4 font-body text-[var(--color-vino-tinto)]">
+          {dictionary.reservations.genericError}
+        </p>
+      )}
+
       <div className="mb-4">
         <label htmlFor="field-date" className="block font-label text-sm">
           {dictionary.reservations.dateLabel}
@@ -110,6 +120,7 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
         <Input
           id="field-date"
           type="date"
+          min={new Date().toISOString().split("T")[0]}
           aria-invalid={!!errors.date}
           aria-describedby={errors.date ? "field-date-error" : undefined}
           {...register("date")}

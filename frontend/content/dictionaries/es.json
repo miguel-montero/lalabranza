@@ -1,4 +1,7 @@
 {
+  "meta": {
+    "description": "La Labranza, el restaurante de cocina en vivo y relatos a la mesa de Viña La Quirinca — cocina tradicional chilena preparada y narrada en tu mesa en un fundo vitivinícola boutique cerca de Santiago."
+  },
   "nav": {
     "home": "Inicio",
     "menu": "Menú",
@@ -27,9 +30,10 @@
     "submit": "Solicitar reserva",
     "submitting": "Enviando…",
     "successTitle": "Solicitud recibida",
-    "successBody": "Confirmaremos tu reserva por correo en breve.",
+    "successBody": "Nos pondremos en contacto en breve para confirmar tu reserva.",
     "errorSummaryTitle": "Hay un problema",
-    "noCapacity": "Ese horario está completo — prueba con otro."
+    "noCapacity": "Ese horario está completo — prueba con otro.",
+    "genericError": "Algo salió mal — inténtalo de nuevo o contáctanos directamente."
   },
   "footer": {
     "partOf": "Parte de Viña La Quirinca",

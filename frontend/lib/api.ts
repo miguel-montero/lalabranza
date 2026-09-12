@@ -15,6 +15,12 @@ export async function checkAvailability(
   const res = await fetch(
     `/webdb/availability.php?date=${encodeURIComponent(date)}&time_slot=${encodeURIComponent(timeSlot)}`,
   );
+  if (!res.ok) {
+    // Treat any non-200 response (bad request, server error, etc.) as "no
+    // confirmed capacity" rather than trusting/parsing an error body as if
+    // it had the `{ remaining }` shape.
+    return { remaining: 0 };
+  }
   return res.json();
 }
 
@@ -68,6 +74,13 @@ export async function fetchAdminReservations(): Promise<
   if (res.status === 401) {
     return { error: "unauthorized" };
   }
+  return res.json();
+}
+
+export async function adminLogout(): Promise<{ status: string }> {
+  const res = await fetch("/webdb/admin_logout.php", {
+    method: "POST",
+  });
   return res.json();
 }
 

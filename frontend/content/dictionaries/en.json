@@ -1,4 +1,7 @@
 {
+  "meta": {
+    "description": "La Labranza, the live-cooking, tableside-storytelling restaurant of Viña La Quirinca — traditional Chilean cuisine cooked and narrated at your table on a boutique winery estate near Santiago."
+  },
   "nav": {
     "home": "Home",
     "menu": "Menu",
@@ -27,9 +30,10 @@
     "submit": "Request reservation",
     "submitting": "Requesting…",
     "successTitle": "Request received",
-    "successBody": "We'll confirm your seating by email shortly.",
+    "successBody": "We'll be in touch shortly to confirm your seating.",
     "errorSummaryTitle": "There is a problem",
-    "noCapacity": "That seating is fully booked — try another time."
+    "noCapacity": "That seating is fully booked — try another time.",
+    "genericError": "Something went wrong — please try again or contact us directly."
   },
   "footer": {
     "partOf": "Part of Viña La Quirinca",
