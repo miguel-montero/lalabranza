@@ -1,5 +1,10 @@
 # Deploying La Labranza to HostGator
 
+This site is an addon domain on an account whose `public_html/` already
+serves a different site. La Labranza's document root is
+`public_html/lalabranza.cl/` — every path below that would otherwise read
+`public_html/...` means `public_html/lalabranza.cl/...` instead.
+
 ## One-time setup
 
 1. Locally, from `backend/`, run
@@ -26,6 +31,14 @@
    and fill in the real cPanel database host/name/user/password). This
    file is gitignored — it only ever exists on the server, never in the
    repo.
+
+### Addon domain document root
+
+Confirm in cPanel → Domains that `lalabranza.cl` (or whatever domain/
+subdomain this addon points at) is mapped to `public_html/lalabranza.cl/`
+as its document root — not to `public_html/` itself, which serves the
+other, pre-existing site on this account. Every deploy below uploads into
+that `lalabranza.cl/` subfolder.
 
 ### Credential safety: `config.php` lives inside the web root
 
@@ -73,9 +86,10 @@ fatal parse error).
 1. Locally: drop real source photos into `frontend/images-src/`, then run
    `cd frontend && npm run build` (this runs `optimize-images` via the
    `prebuild` script automatically, then produces `frontend/out/`).
-2. Upload the *contents* of `frontend/out/` to the HostGator account's web
-   root (e.g. `public_html/`) via SFTP or cPanel File Manager. This
-   includes `frontend/public/.htaccess`, which Next's static export
+2. Upload the *contents* of `frontend/out/` to this addon domain's web
+   root, `public_html/lalabranza.cl/`, via SFTP or cPanel File Manager —
+   **not** `public_html/` itself, which serves the account's other site.
+   This includes `frontend/public/.htaccess`, which Next's static export
    copies verbatim into `frontend/out/.htaccess`. It does two things at
    the server level (Apache): 302-redirects the apex `/` to `/en/` (so
    visitors and crawlers get a real redirect instead of only the
@@ -84,10 +98,11 @@ fatal parse error).
    "Credential safety" above). No build config change is needed for
    either; both ship automatically as part of `frontend/out/`.
 3. Upload `backend/webdb/`, `backend/src/`, `backend/vendor/`, and
-   `backend/config.php` to `public_html/webdb/`, `public_html/src/`, etc.
-   — i.e. preserve the same relative layout so `require __DIR__ .
-   '/../vendor/autoload.php'` in each endpoint still resolves correctly.
-   Do **not** upload `backend/config.example.php`, `backend/tests/`, or
+   `backend/config.php` to `public_html/lalabranza.cl/webdb/`,
+   `public_html/lalabranza.cl/src/`, etc. — i.e. preserve the same
+   relative layout so `require __DIR__ . '/../vendor/autoload.php'` in
+   each endpoint still resolves correctly. Do **not** upload
+   `backend/config.example.php`, `backend/tests/`, or
    `backend/migrations/` to production — they're development-only.
 4. Confirm PHP's session save path is writable on the host (HostGator's
    default shared-hosting PHP config normally handles this without
