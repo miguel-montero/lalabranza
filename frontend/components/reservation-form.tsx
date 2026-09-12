@@ -16,7 +16,7 @@ const TIME_SLOTS = ["11:00:00", "14:00:00"];
 const schema = z.object({
   date: z.string().min(1),
   timeSlot: z.enum(["11:00:00", "14:00:00"]),
-  partySize: z.coerce.number().int().min(1),
+  partySize: z.coerce.number().int().min(1).max(20),
   name: z.string().min(1),
   email: z.string().email(),
   phone: z.string().min(1),
@@ -165,6 +165,7 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
           id="field-partySize"
           type="number"
           min={1}
+          max={20}
           aria-invalid={!!errors.partySize}
           aria-describedby={errors.partySize ? "field-partySize-error" : undefined}
           {...register("partySize")}

@@ -118,3 +118,8 @@ Do not consider the site launched until every item below is checked:
       `password_hash` step above, and the new password has been verified
       to actually work by logging into `/admin/login` on the live site —
       not just assumed from having run the SQL update.
+- [ ] `backend/src/Session.php`'s `session_set_cookie_params()` call has
+      `'secure' => true` added once the site is actually served over
+      HTTPS (it's deliberately left off in the repo since local dev runs
+      over plain HTTP, where a `secure` cookie would never be sent at
+      all — see the `TODO` comment in that file).
