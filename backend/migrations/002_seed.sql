@@ -12,7 +12,7 @@ INSERT INTO admin_users (restaurant_id, username, password_hash)
 VALUES (
   (SELECT id FROM restaurants WHERE slug = 'la-labranza'),
   'staff',
-  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+  '$2y$12$WXjf.0XcQYHDsuadIy/7uOeG9A2jCsM8h1/gj/1BEOE5MZcBnP3Ge'
 );
 
 INSERT INTO capacity_rules (restaurant_id, day_of_week, time_slot, max_covers, slot_length_minutes)
