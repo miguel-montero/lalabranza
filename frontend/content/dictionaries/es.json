@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "menu": "Menú",
+    "gallery": "Galería",
+    "about": "Nosotros y Ubicación",
+    "contact": "Contacto",
+    "reservations": "Reservas"
+  },
+  "home": {
+    "eyebrow": "Viña La Quirinca",
+    "headline": "La Labranza",
+    "subhead": "Una mesa contada — la cena se cocina, se explica y se sirve frente a ti.",
+    "cta": "Reserva tu mesa",
+    "valueProp": "Cocina tradicional chilena, contada como una historia: cada plato preparado y narrado en tu mesa, maridado con vino cultivado en el mismo fundo donde estás sentado."
+  },
+  "reservations": {
+    "title": "Reserva una mesa",
+    "intro": "Los cupos son limitados para que cada mesa reciba la experiencia completa. Elige fecha, hora y número de personas para consultar disponibilidad.",
+    "dateLabel": "Fecha",
+    "timeLabel": "Horario",
+    "partySizeLabel": "Número de personas",
+    "nameLabel": "Nombre completo",
+    "emailLabel": "Correo electrónico",
+    "phoneLabel": "Teléfono",
+    "notesLabel": "Notas (opcional)",
+    "submit": "Solicitar reserva",
+    "submitting": "Enviando…",
+    "successTitle": "Solicitud recibida",
+    "successBody": "Confirmaremos tu reserva por correo en breve.",
+    "errorSummaryTitle": "Hay un problema",
+    "noCapacity": "Ese horario está completo — prueba con otro."
+  },
+  "footer": {
+    "partOf": "Parte de Viña La Quirinca",
+    "rights": "Todos los derechos reservados."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "gallery": "Gallery",
+    "about": "About & Location",
+    "contact": "Contact",
+    "reservations": "Reservations"
+  },
+  "home": {
+    "eyebrow": "Viña La Quirinca",
+    "headline": "La Labranza",
+    "subhead": "A tableside table — dinner cooked, explained, and poured in front of you.",
+    "cta": "Reserve your seating",
+    "valueProp": "Traditional Chilean cuisine, told as a story: each course prepared and narrated at your table, paired with wine grown on the estate you're sitting on."
+  },
+  "reservations": {
+    "title": "Reserve a seating",
+    "intro": "Seatings are limited so every table gets the full tableside experience. Choose a date, time, and party size to check availability.",
+    "dateLabel": "Date",
+    "timeLabel": "Seating time",
+    "partySizeLabel": "Party size",
+    "nameLabel": "Full name",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "notesLabel": "Notes (optional)",
+    "submit": "Request reservation",
+    "submitting": "Requesting…",
+    "successTitle": "Request received",
+    "successBody": "We'll confirm your seating by email shortly.",
+    "errorSummaryTitle": "There is a problem",
+    "noCapacity": "That seating is fully booked — try another time."
+  },
+  "footer": {
+    "partOf": "Part of Viña La Quirinca",
+    "rights": "All rights reserved."
+  }
+}
