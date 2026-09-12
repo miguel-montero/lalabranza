@@ -48,3 +48,37 @@ export async function adminLogin(
   });
   return res.json();
 }
+
+export type AdminReservation = {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  party_size: number;
+  reservation_date: string;
+  time_slot: string;
+  status: "pending" | "confirmed" | "cancelled";
+  notes: string | null;
+};
+
+export async function fetchAdminReservations(): Promise<
+  { reservations: AdminReservation[] } | { error: string }
+> {
+  const res = await fetch("/webdb/admin_reservations_list.php");
+  if (res.status === 401) {
+    return { error: "unauthorized" };
+  }
+  return res.json();
+}
+
+export async function updateReservationStatus(
+  id: number,
+  status: "confirmed" | "cancelled",
+): Promise<{ status: string } | { error: string }> {
+  const res = await fetch("/webdb/admin_reservations_update.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id, status }),
+  });
+  return res.json();
+}
