@@ -28,15 +28,8 @@ as a pinned link):
 
 ```
 
-**Days & hours of service** — ✅ days/hours confirmed: **Monday–Friday,
-10:00–17:00**. ⚠️ Still open: the reservation system books specific
-*seating times* within that window, not a walk-in range. I set two
-placeholders — **11:00 AM and 2:00 PM** — so the booking flow stays
-consistent. Confirm the real seating time(s), or tell me if it's actually
-walk-in/no fixed seatings:
-```
-Seating time(s):
-```
+**Days & hours of service** — ✅ confirmed and live: **Monday–Friday,
+seatings at 11:00 AM and 2:00 PM.**
 
 ---
 

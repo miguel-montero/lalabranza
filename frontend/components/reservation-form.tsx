@@ -9,9 +9,8 @@ import { checkAvailability, createReservation } from "@/lib/api";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
-// Placeholder seating times within the confirmed Mon–Fri, 10:00–17:00
-// window — pending confirmation of the actual seating schedule. Keep in
-// sync with backend/migrations/002_seed.sql's capacity_rules seed.
+// Confirmed seating times, Monday–Friday. Keep in sync with
+// backend/migrations/002_seed.sql's capacity_rules seed.
 const TIME_SLOTS = ["11:00:00", "14:00:00"];
 
 const schema = z.object({

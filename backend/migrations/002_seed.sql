@@ -15,10 +15,9 @@ VALUES (
   '$2y$12$WXjf.0XcQYHDsuadIy/7uOeG9A2jCsM8h1/gj/1BEOE5MZcBnP3Ge'
 );
 
--- Monday-Friday (day_of_week 1-5), two placeholder seatings (11:00/14:00)
--- within the confirmed 10:00-17:00 window — exact seating times pending
--- confirmation. Keep in sync with frontend TIME_SLOTS in
--- reservation-form.tsx if these change.
+-- Monday-Friday (day_of_week 1-5), two confirmed seatings (11:00/14:00).
+-- Keep in sync with frontend TIME_SLOTS in reservation-form.tsx if these
+-- ever change.
 INSERT INTO capacity_rules (restaurant_id, day_of_week, time_slot, max_covers, slot_length_minutes)
 SELECT id, dow, slot, 24, 120
 FROM restaurants

@@ -92,8 +92,6 @@ export const restaurantContent: Record<Locale, RestaurantContent> = {
     address: "Sector D 431, Los Muñoces, Isla de Maipo, Región Metropolitana, Chile",
     phone: "+56 [PHONE — REPLACE BEFORE LAUNCH]",
     email: "reservas@lalabranza.cl",
-    // Days confirmed (Monday–Friday); exact seating times are a placeholder
-    // pending confirmation — see TIME_SLOTS in reservation-form.tsx.
     hours: "Seatings Monday–Friday, 11:00 AM and 2:00 PM",
     mapEmbedSrc:
       "https://maps.google.com/maps?q=" +
@@ -107,9 +105,6 @@ export const restaurantContent: Record<Locale, RestaurantContent> = {
     address: "Sector D 431, Los Muñoces, Isla de Maipo, Región Metropolitana, Chile",
     phone: "+56 [TELÉFONO — REEMPLAZAR ANTES DEL LANZAMIENTO]",
     email: "reservas@lalabranza.cl",
-    // Días confirmados (lunes a viernes); los horarios exactos son un
-    // valor provisorio pendiente de confirmación — ver TIME_SLOTS en
-    // reservation-form.tsx.
     hours: "Servicio de lunes a viernes, 11:00 y 14:00 horas",
     mapEmbedSrc:
       "https://maps.google.com/maps?q=" +
