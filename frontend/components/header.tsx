@@ -25,7 +25,7 @@ export function Header({
       <Link href={`/${locale}`} className="font-display text-xl">
         La Labranza
       </Link>
-      <nav className="-mx-6 flex items-center gap-4 overflow-x-auto whitespace-nowrap px-6 md:mx-0 md:gap-6 md:overflow-visible md:px-0">
+      <nav className="flex flex-wrap items-center gap-x-4 gap-y-2 md:flex-nowrap md:gap-6">
         {NAV_ITEMS.map(({ key, path }) => (
           <Link
             key={key}
