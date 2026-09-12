@@ -12,7 +12,7 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
 const STATUS_VARIANT: Record<AdminReservation["status"], string> = {
-  pending: "bg-[var(--color-lana-dorada)]",
+  pending: "bg-[var(--color-lana-dorada)] text-[var(--color-piedra-volcanica)]",
   confirmed: "bg-[var(--color-vina)]",
   cancelled: "bg-[var(--color-piedra-volcanica)]/40",
 };
