@@ -16,7 +16,7 @@ export function LocaleToggle({
   const href = `/${target}${rest}`;
 
   return (
-    <Link href={href} className="font-label text-sm underline">
+    <Link href={href} className="shrink-0 px-2 py-2.5 font-label text-sm underline">
       {LABEL[target]}
     </Link>
   );
