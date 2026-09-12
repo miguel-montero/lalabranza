@@ -33,23 +33,23 @@ Per the layout in "Every deploy" below, `backend/config.php` ends up at
 `public_html/config.php` — inside the web root. If PHP handling on the
 host is ever misconfigured (wrong handler for `.php`, PHP disabled after
 an account change, etc.), this file could be served as plain text and
-leak database credentials. Two ways to reduce that risk — pick whichever
-is simpler to keep maintained; the `.htaccess` rule is the lower-effort,
-lower-risk option and doesn't require restructuring the repo:
+leak database credentials.
 
-- **Lower-effort (recommended): deny direct access via `.htaccess`.** Add
-  a rule to `public_html/.htaccess` that denies direct HTTP requests for
-  `config.php` (and any other bare source `.php` files outside `webdb/`),
-  e.g.:
-  ```apache
-  <Files "config.php">
-    Require all denied
-  </Files>
-  ```
-  This still lets `webdb/*.php` endpoints `require` it internally (a
-  filesystem include, not an HTTP request) while blocking any direct
-  browser hit to `/config.php`.
-- **Higher-effort: move non-`webdb` backend files above the web root.**
+**This is already handled automatically** — `frontend/public/.htaccess`
+includes a `<Files "config.php"> Require all denied </Files>` rule
+alongside the apex-redirect rule, and (like that redirect) ships with
+every deploy via `frontend/out/.htaccess` since Next's static export
+copies `public/` verbatim. No manual per-server `.htaccess` edit is
+needed, and none should be added directly on the server — anything
+hand-edited into `public_html/.htaccess` there would be silently
+overwritten the next time `frontend/out/`'s contents are uploaded. If you
+need additional server-side rules, add them to `frontend/public/.htaccess`
+in the repo instead, so they're version-controlled and survive deploys.
+
+For extra defense in depth beyond the `.htaccess` rule, or on a host where
+you don't trust `.htaccess` enforcement, there's a higher-effort option:
+
+- **Move non-`webdb` backend files above the web root.**
   Upload `backend/src/`, `backend/config.php`, and `backend/vendor/` one
   level above `public_html/` (a directory not served over HTTP at all),
   and adjust the `require __DIR__ . '/../vendor/autoload.php'`-style
@@ -76,12 +76,13 @@ fatal parse error).
 2. Upload the *contents* of `frontend/out/` to the HostGator account's web
    root (e.g. `public_html/`) via SFTP or cPanel File Manager. This
    includes `frontend/public/.htaccess`, which Next's static export
-   copies verbatim into `frontend/out/.htaccess` — it 302-redirects the
-   apex `/` to `/en/` at the server level (Apache), so visitors and
-   crawlers get a real redirect instead of only the client-side
-   JS-only redirect that `frontend/app/page.tsx` produces under static
-   export. No build config change is needed for this; it ships
-   automatically as part of `frontend/out/`.
+   copies verbatim into `frontend/out/.htaccess`. It does two things at
+   the server level (Apache): 302-redirects the apex `/` to `/en/` (so
+   visitors and crawlers get a real redirect instead of only the
+   client-side JS-only redirect `frontend/app/page.tsx` produces under
+   static export), and denies direct HTTP access to `config.php` (see
+   "Credential safety" above). No build config change is needed for
+   either; both ship automatically as part of `frontend/out/`.
 3. Upload `backend/webdb/`, `backend/src/`, `backend/vendor/`, and
    `backend/config.php` to `public_html/webdb/`, `public_html/src/`, etc.
    — i.e. preserve the same relative layout so `require __DIR__ .

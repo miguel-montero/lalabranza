@@ -1,1 +1,11 @@
 RedirectMatch 302 ^/$ /en/
+
+# Deny direct HTTP access to the backend's DB config file. It must stay
+# readable by PHP's own `require` (a filesystem include, not an HTTP
+# request) so backend/webdb/*.php can still load it — this only blocks a
+# browser hitting /config.php directly. Lives here (not hand-edited on
+# the server) so it ships with every deploy instead of being silently
+# overwritten the next time frontend/out/ is uploaded.
+<Files "config.php">
+  Require all denied
+</Files>
