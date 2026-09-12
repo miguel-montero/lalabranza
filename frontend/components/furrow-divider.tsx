@@ -1,4 +1,13 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 type FurrowDividerProps = {
   variant?: "divider" | "hero";
@@ -20,13 +29,48 @@ export function FurrowDivider({
   variant = "divider",
   className,
 }: FurrowDividerProps) {
+  const svgRef = useRef<SVGSVGElement>(null);
   const strokeColor =
     variant === "hero"
       ? "var(--color-cobre-viejo)"
       : "var(--color-piedra-volcanica)";
 
+  // The "etch" reveal: strokes draw themselves in as the divider scrolls
+  // into view, echoing how a furrow is actually cut. Gated behind
+  // prefers-reduced-motion the same way Reveal/RevealStagger are — the
+  // paths render fully drawn by default, and gsap only ever animates
+  // *from* the undrawn (dash-offset) state when motion is allowed, so
+  // there's never a stroke stuck invisible without JS.
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
+    const paths = svg.querySelectorAll("path");
+
+    const mm = gsap.matchMedia();
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.set(paths, {
+        strokeDasharray: (_i, el) => (el as SVGPathElement).getTotalLength(),
+        strokeDashoffset: (_i, el) => (el as SVGPathElement).getTotalLength(),
+      });
+      gsap.to(paths, {
+        strokeDashoffset: 0,
+        duration: 0.6,
+        stagger: 0.06,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: svg,
+          start: "top 90%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
+
+    return () => mm.revert();
+  }, []);
+
   return (
     <svg
+      ref={svgRef}
       role="img"
       aria-hidden="true"
       viewBox="0 0 400 46"
