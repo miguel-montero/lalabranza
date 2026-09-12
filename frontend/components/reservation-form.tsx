@@ -40,7 +40,7 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
     if (hasErrors) {
       summaryRef.current?.focus();
     }
-  }, [hasErrors, errors]);
+  }, [hasErrors]);
 
   const onSubmit = async (values: FormValues) => {
     setResult("idle");
