@@ -21,16 +21,16 @@ export function Header({
   pathname: string;
 }) {
   return (
-    <header className="flex items-center justify-between px-6 py-4 md:px-12">
+    <header className="flex flex-col gap-2 px-6 py-4 md:flex-row md:items-center md:justify-between md:px-12">
       <Link href={`/${locale}`} className="font-display text-xl">
         La Labranza
       </Link>
-      <nav className="flex items-center gap-6">
+      <nav className="-mx-6 flex items-center gap-4 overflow-x-auto whitespace-nowrap px-6 md:mx-0 md:gap-6 md:overflow-visible md:px-0">
         {NAV_ITEMS.map(({ key, path }) => (
           <Link
             key={key}
             href={`/${locale}${path}`}
-            className="font-label text-sm uppercase tracking-wide"
+            className="shrink-0 font-label text-sm uppercase tracking-wide"
           >
             {dictionary.nav[key]}
           </Link>

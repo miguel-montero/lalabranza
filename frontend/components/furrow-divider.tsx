@@ -31,7 +31,7 @@ export function FurrowDivider({
       aria-hidden="true"
       viewBox="0 0 400 46"
       preserveAspectRatio="none"
-      className={cn("w-full h-auto", className)}
+      className={cn("w-full h-10", className)}
     >
       {STROKES.map((s, i) => (
         <path

@@ -11,9 +11,14 @@ describe("AboutPage", () => {
     expect(screen.getByText(restaurantContent.en.hours)).toBeInTheDocument();
   });
 
-  it("embeds a map iframe", async () => {
+  it("embeds a map iframe when real coordinates are set, or a graceful placeholder otherwise", async () => {
     const Page = await AboutPage({ params: Promise.resolve({ locale: "en" }) });
     render(Page);
-    expect(screen.getByTitle("Location map")).toBeInTheDocument();
+    const hasRealCoordinates = !restaurantContent.en.mapEmbedSrc.includes("[COORDINATES]");
+    if (hasRealCoordinates) {
+      expect(screen.getByTitle("Location map")).toBeInTheDocument();
+    } else {
+      expect(screen.getByText(/map available/i)).toBeInTheDocument();
+    }
   });
 });

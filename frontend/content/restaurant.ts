@@ -27,15 +27,32 @@ export type RestaurantContent = {
   menu: MenuCategory[];
 };
 
-const heroPhoto: GalleryPhoto = {
-  src: "/images/hero-estate.jpg",
-  alt: "The estate at golden hour, table set outdoors among the vines",
+const heroPhotoEn: GalleryPhoto = {
+  src: "/images/hero-estate.webp",
+  alt: "Guests gathered around the long communal table, wine poured, sunlight through the curtains",
 };
 
-const gallery: GalleryPhoto[] = [
-  { src: "/images/gallery-1.jpg", alt: "Outdoor dining table set among the vineyard rows" },
-  { src: "/images/gallery-2.jpg", alt: "Chef preparing a dish tableside" },
-  { src: "/images/gallery-3.jpg", alt: "Alpacas grazing on the estate grounds" },
+const heroPhotoEs: GalleryPhoto = {
+  src: "/images/hero-estate.webp",
+  alt: "Invitados reunidos en la mesa larga, vino servido, luz de sol entrando por las cortinas",
+};
+
+const galleryEn: GalleryPhoto[] = [
+  { src: "/images/gallery-toast.webp", alt: "Guests raising a toast together at the long table" },
+  { src: "/images/gallery-grapes.webp", alt: "Wine grapes ripening on the vine at the estate" },
+  { src: "/images/gallery-alpaca.webp", alt: "One of the estate's alpacas, close up" },
+  { src: "/images/gallery-horse.webp", alt: "A guest feeding one of the estate's horses at golden hour" },
+  { src: "/images/gallery-tasting-room.webp", alt: "Guests enjoying a flight in the tasting room" },
+  { src: "/images/gallery-bar.webp", alt: "The tasting bar, set with spirits and snacks" },
+];
+
+const galleryEs: GalleryPhoto[] = [
+  { src: "/images/gallery-toast.webp", alt: "Invitados brindando juntos en la mesa larga" },
+  { src: "/images/gallery-grapes.webp", alt: "Uvas madurando en la viña del fundo" },
+  { src: "/images/gallery-alpaca.webp", alt: "Una de las alpacas del fundo, de cerca" },
+  { src: "/images/gallery-horse.webp", alt: "Una visitante alimentando a uno de los caballos del fundo al atardecer" },
+  { src: "/images/gallery-tasting-room.webp", alt: "Invitados disfrutando una degustación en la sala de cata" },
+  { src: "/images/gallery-bar.webp", alt: "La barra de degustación, con destilados y aperitivos" },
 ];
 
 const menuEn: MenuCategory[] = [
@@ -77,8 +94,8 @@ export const restaurantContent: Record<Locale, RestaurantContent> = {
     email: "reservas@lalabranza.example",
     hours: "Seatings Thursday–Sunday, 1:00 PM and 8:00 PM",
     mapEmbedSrc: "https://maps.google.com/maps?q=[COORDINATES]&output=embed",
-    heroPhoto,
-    gallery,
+    heroPhoto: heroPhotoEn,
+    gallery: galleryEn,
     menu: menuEn,
   },
   es: {
@@ -87,8 +104,8 @@ export const restaurantContent: Record<Locale, RestaurantContent> = {
     email: "reservas@lalabranza.example",
     hours: "Servicio de jueves a domingo, 13:00 y 20:00 horas",
     mapEmbedSrc: "https://maps.google.com/maps?q=[COORDINATES]&output=embed",
-    heroPhoto,
-    gallery,
+    heroPhoto: heroPhotoEs,
+    gallery: galleryEs,
     menu: menuEs,
   },
 };

@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import HomePage from "./page";
+import { restaurantContent } from "@/content/restaurant";
 
 describe("HomePage", () => {
   it("renders the headline, subhead, and a reservations CTA for English", async () => {
@@ -20,7 +21,7 @@ describe("HomePage", () => {
     const Page = await HomePage({ params: Promise.resolve({ locale: "en" }) });
     render(Page);
     expect(
-      screen.getByAltText("The estate at golden hour, table set outdoors among the vines"),
+      screen.getByAltText(restaurantContent.en.heroPhoto.alt),
     ).toBeInTheDocument();
   });
 });

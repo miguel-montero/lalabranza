@@ -15,7 +15,11 @@
     "headline": "La Labranza",
     "subhead": "Una mesa contada — la cena se cocina, se explica y se sirve frente a ti.",
     "cta": "Reserva tu mesa",
-    "valueProp": "Cocina tradicional chilena, contada como una historia: cada plato preparado y narrado en tu mesa, maridado con vino cultivado en el mismo fundo donde estás sentado."
+    "valueProp": "Cocina tradicional chilena, contada como una historia: cada plato preparado y narrado en tu mesa, maridado con vino cultivado en el mismo fundo donde estás sentado.",
+    "highlightsEyebrow": "El Fundo",
+    "highlight1": "Cada copa comienza en estas viñas",
+    "highlight2": "Las alpacas pastan a pasos del comedor",
+    "highlight3": "Mesas largas, historias más largas"
   },
   "reservations": {
     "title": "Reserva una mesa",
