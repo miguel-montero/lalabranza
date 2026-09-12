@@ -1,9 +1,12 @@
 # Deploying La Labranza to HostGator
 
 This site is an addon domain on an account whose `public_html/` already
-serves a different site. La Labranza's document root is
-`public_html/lalabranza.cl/` — every path below that would otherwise read
-`public_html/...` means `public_html/lalabranza.cl/...` instead.
+serves a different site. La Labranza's document root is `lalabranza.cl/`,
+a folder that sits one level above `public_html/` — a sibling of it in
+the account's home directory (e.g. `/home/<cpanel-user>/lalabranza.cl/`,
+next to `/home/<cpanel-user>/public_html/`), **not** nested inside
+`public_html/`. Every path below that would otherwise read
+`public_html/...` means `lalabranza.cl/...` instead.
 
 ## One-time setup
 
@@ -35,15 +38,16 @@ serves a different site. La Labranza's document root is
 ### Addon domain document root
 
 Confirm in cPanel → Domains that `lalabranza.cl` (or whatever domain/
-subdomain this addon points at) is mapped to `public_html/lalabranza.cl/`
-as its document root — not to `public_html/` itself, which serves the
+subdomain this addon points at) is mapped to the `lalabranza.cl/` folder
+one level above `public_html/` (a sibling of it, not a subfolder inside
+it) as its document root — not to `public_html/` itself, which serves the
 other, pre-existing site on this account. Every deploy below uploads into
-that `lalabranza.cl/` subfolder.
+that `lalabranza.cl/` folder.
 
 ### Credential safety: `config.php` lives inside the web root
 
 Per the layout in "Every deploy" below, `backend/config.php` ends up at
-`public_html/config.php` — inside the web root. If PHP handling on the
+`lalabranza.cl/config.php` — inside the web root. If PHP handling on the
 host is ever misconfigured (wrong handler for `.php`, PHP disabled after
 an account change, etc.), this file could be served as plain text and
 leak database credentials.
@@ -54,7 +58,7 @@ alongside the apex-redirect rule, and (like that redirect) ships with
 every deploy via `frontend/out/.htaccess` since Next's static export
 copies `public/` verbatim. No manual per-server `.htaccess` edit is
 needed, and none should be added directly on the server — anything
-hand-edited into `public_html/.htaccess` there would be silently
+hand-edited into `lalabranza.cl/.htaccess` there would be silently
 overwritten the next time `frontend/out/`'s contents are uploaded. If you
 need additional server-side rules, add them to `frontend/public/.htaccess`
 in the repo instead, so they're version-controlled and survive deploys.
@@ -87,22 +91,23 @@ fatal parse error).
    `cd frontend && npm run build` (this runs `optimize-images` via the
    `prebuild` script automatically, then produces `frontend/out/`).
 2. Upload the *contents* of `frontend/out/` to this addon domain's web
-   root, `public_html/lalabranza.cl/`, via SFTP or cPanel File Manager —
-   **not** `public_html/` itself, which serves the account's other site.
-   This includes `frontend/public/.htaccess`, which Next's static export
-   copies verbatim into `frontend/out/.htaccess`. It does two things at
-   the server level (Apache): 302-redirects the apex `/` to `/en/` (so
-   visitors and crawlers get a real redirect instead of only the
-   client-side JS-only redirect `frontend/app/page.tsx` produces under
-   static export), and denies direct HTTP access to `config.php` (see
-   "Credential safety" above). No build config change is needed for
-   either; both ship automatically as part of `frontend/out/`.
+   root, the `lalabranza.cl/` folder that sits one level above
+   `public_html/` (a sibling of it, not inside it), via SFTP or cPanel
+   File Manager — **not** `public_html/` itself, which serves the
+   account's other site. This includes `frontend/public/.htaccess`,
+   which Next's static export copies verbatim into
+   `frontend/out/.htaccess`. It does two things at the server level
+   (Apache): 302-redirects the apex `/` to `/en/` (so visitors and
+   crawlers get a real redirect instead of only the client-side JS-only
+   redirect `frontend/app/page.tsx` produces under static export), and
+   denies direct HTTP access to `config.php` (see "Credential safety"
+   above). No build config change is needed for either; both ship
+   automatically as part of `frontend/out/`.
 3. Upload `backend/webdb/`, `backend/src/`, `backend/vendor/`, and
-   `backend/config.php` to `public_html/lalabranza.cl/webdb/`,
-   `public_html/lalabranza.cl/src/`, etc. — i.e. preserve the same
-   relative layout so `require __DIR__ . '/../vendor/autoload.php'` in
-   each endpoint still resolves correctly. Do **not** upload
-   `backend/config.example.php`, `backend/tests/`, or
+   `backend/config.php` to `lalabranza.cl/webdb/`, `lalabranza.cl/src/`,
+   etc. — i.e. preserve the same relative layout so `require __DIR__ .
+   '/../vendor/autoload.php'` in each endpoint still resolves correctly.
+   Do **not** upload `backend/config.example.php`, `backend/tests/`, or
    `backend/migrations/` to production — they're development-only.
 4. Confirm PHP's session save path is writable on the host (HostGator's
    default shared-hosting PHP config normally handles this without
