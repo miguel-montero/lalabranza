@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home4/stampst1/lalabranza.cl/
+    - /bin/cp -R frontend/out/. $DEPLOYPATH
+    - /bin/mkdir -p $DEPLOYPATH/webdb $DEPLOYPATH/src $DEPLOYPATH/vendor
+    - /bin/cp -R backend/webdb/. $DEPLOYPATH/webdb/
+    - /bin/cp -R backend/src/. $DEPLOYPATH/src/
+    - /bin/cp -R backend/vendor/. $DEPLOYPATH/vendor/

@@ -15,7 +15,8 @@
 
 # next.js
 /.next/
-/out/
+# /out/ is intentionally committed — cPanel Git Version Control deploys
+# this pre-built static export directly, with no Node/npm on the server.
 
 # production
 /build
