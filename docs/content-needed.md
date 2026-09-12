@@ -9,34 +9,33 @@ later.
 
 ## 1. Business basics
 
-**Street address** (as it should appear on the site and in Google Maps):
+**Street address** — ✅ received and live:
 ```
-EN:
-ES:
+Sector D 431, Los Muñoces, Isla de Maipo, Región Metropolitana, Chile
 ```
 
-**Phone** (the number guests should call/WhatsApp, with country code):
+**Phone** — still pending:
 ```
 +56 ...
 ```
 
-**Reservation email** (currently set to `reservas@lalabranza.example` —
-confirm or replace):
+**Reservation email** — ✅ received and live: `reservas@lalabranza.cl`
+
+**Google Maps link** — still pending final share link (site currently
+geocodes the address text above directly, which works but isn't as precise
+as a pinned link):
 ```
 
 ```
 
-**Google Maps link or coordinates** — easiest way: open the location in
-Google Maps, click "Share," copy the link, paste it here:
+**Days & hours of service** — ✅ days/hours confirmed: **Monday–Friday,
+10:00–17:00**. ⚠️ Still open: the reservation system books specific
+*seating times* within that window, not a walk-in range. I set two
+placeholders — **11:00 AM and 2:00 PM** — so the booking flow stays
+consistent. Confirm the real seating time(s), or tell me if it's actually
+walk-in/no fixed seatings:
 ```
-
-```
-
-**Days & hours of service** — the site currently says "Thursday–Sunday, 1:00
-PM and 8:00 PM" as a placeholder guess. Confirm or correct:
-```
-EN:
-ES:
+Seating time(s):
 ```
 
 ---
@@ -84,20 +83,13 @@ adapt it into this structure myself.
 
 ---
 
-## 4. Marketing copy — optional review
-
-I already wrote the headline/tagline copy on the homepage in what I believe
-is the right voice (warm, a little theatrical, not corporate). You don't
-need to write new copy here — just flag anything that feels off and I'll
-adjust it. Current text, for reference:
+## 4. Marketing copy — ✅ updated per your text, now live
 
 - **Eyebrow:** "Viña La Quirinca"
 - **Headline:** "La Labranza"
-- **Subhead:** "A tableside table — dinner cooked, explained, and poured in front of you."
-- **Value proposition:** "Traditional Chilean cuisine, told as a story: each course prepared and narrated at your table, paired with wine grown on the estate you're sitting on."
-- **Highlights strip captions:** "Every glass starts in these vines" / "Alpacas graze just beyond the dining room" / "Long tables, longer stories"
-- **Reservation success message:** "We'll be in touch shortly to confirm your seating."
+- **Subhead:** "A tableside experience — Chilean cuisine prepared, explained, and paired with wine right in front of you."
+- **Value proposition:** "Traditional Chilean cuisine with a story to tell. Each dish is prepared and presented at your table, paired with wines made here at Viña La Quirinca."
+- **Highlights strip captions:** "Wines from Viña La Quirinca" / "From the farm to your table" / "Chilean flavors, prepared right in front of you"
+- **Reservation success message:** "We'll be in touch shortly to confirm your seating." (unchanged)
 
-If any of these should change (e.g. you want to name the tasting-menu format
-explicitly, mention wine pairings by name, or drop the alpacas from the
-copy), just tell me what to say instead.
+Still open to further edits any time — just tell me what to change.
