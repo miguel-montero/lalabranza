@@ -5,14 +5,14 @@
 1. In cPanel, create a MySQL database and user (Databases → MySQL Database
    Wizard). Note the database name, username, and password — cPanel
    prefixes them with your account name (e.g. `youracct_lalabranza`).
-2. Via phpMyAdmin (cPanel → phpMyAdmin), run `backend/migrations/001_schema.sql`
-   then `backend/migrations/002_seed.sql` against that database. Edit the
-   seed file's placeholder address/phone before running it if real content
-   is ready.
+2. Via phpMyAdmin (cPanel → phpMyAdmin), paste the contents of
+   `backend/migrations/001_schema.sql` into the SQL tab and execute, then
+   do the same for `backend/migrations/002_seed.sql`. Edit the seed file's
+   placeholder address/phone before executing if real content is ready.
 3. Generate a real admin password hash:
    `php -r "echo password_hash('YOUR_REAL_PASSWORD', PASSWORD_DEFAULT);"`
    and update the `admin_users` row with it via phpMyAdmin.
-4. Create `backend/config.php` on the server (copy `config.example.php`
+4. Create `backend/config.php` on the server (copy `backend/config.example.php`
    and fill in the real cPanel database host/name/user/password). This
    file is gitignored — it only ever exists on the server, never in the
    repo.
