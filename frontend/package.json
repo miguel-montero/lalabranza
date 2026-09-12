@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "prebuild": "npm run optimize-images",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -39,6 +41,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
     "jsdom": "^30.0.1",
+    "sharp": "^0.35.4",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4",
     "typescript": "^5",
