@@ -44,6 +44,11 @@ const galleryEn: GalleryPhoto[] = [
   { src: "/images/gallery-horse.webp", alt: "A guest feeding one of the estate's horses at golden hour" },
   { src: "/images/gallery-tasting-room.webp", alt: "Guests enjoying a flight in the tasting room" },
   { src: "/images/gallery-bar.webp", alt: "The tasting bar, set with spirits and snacks" },
+  { src: "/images/gallery-table-set.webp", alt: "The long table set for guests, wine and flowers along its length" },
+  { src: "/images/gallery-pisco-tasting.webp", alt: "A flight of pisco tastings lined up at the bar" },
+  { src: "/images/gallery-alpaca-portrait.webp", alt: "A close portrait of a young dark alpaca" },
+  { src: "/images/gallery-tasting-bar.webp", alt: "Guests raising a toast at the tasting bar" },
+  { src: "/images/gallery-horse-closeup.webp", alt: "A guest's hand reaching to feed one of the estate's horses" },
 ];
 
 const galleryEs: GalleryPhoto[] = [
@@ -53,6 +58,11 @@ const galleryEs: GalleryPhoto[] = [
   { src: "/images/gallery-horse.webp", alt: "Una visitante alimentando a uno de los caballos del fundo al atardecer" },
   { src: "/images/gallery-tasting-room.webp", alt: "Invitados disfrutando una degustación en la sala de cata" },
   { src: "/images/gallery-bar.webp", alt: "La barra de degustación, con destilados y aperitivos" },
+  { src: "/images/gallery-table-set.webp", alt: "La mesa larga lista para los invitados, con vino y flores" },
+  { src: "/images/gallery-pisco-tasting.webp", alt: "Una degustación de piscos servida en la barra" },
+  { src: "/images/gallery-alpaca-portrait.webp", alt: "Retrato de cerca de una alpaca joven de color oscuro" },
+  { src: "/images/gallery-tasting-bar.webp", alt: "Invitados brindando en la barra de degustación" },
+  { src: "/images/gallery-horse-closeup.webp", alt: "La mano de un invitado alimentando a uno de los caballos del fundo" },
 ];
 
 const menuEn: MenuCategory[] = [
