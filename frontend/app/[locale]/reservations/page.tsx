@@ -13,7 +13,7 @@ export default async function ReservationsPage({
   const photo = restaurantContent[locale as Locale].heroPhoto;
 
   return (
-    <main className="px-6 py-16 md:px-12 max-w-5xl mx-auto grid gap-10 md:grid-cols-2">
+    <main className="px-6 pt-32 pb-16 md:px-12 max-w-5xl mx-auto grid gap-10 md:grid-cols-2">
       <div className="max-w-xl">
         <h1 className="font-display text-3xl mb-2">{dict.reservations.title}</h1>
         <p className="font-body mb-8">{dict.reservations.intro}</p>

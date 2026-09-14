@@ -15,7 +15,7 @@ export default async function ContactPage({
   const photo = content.gallery[5];
 
   return (
-    <main className="px-6 py-16 md:px-12 max-w-5xl mx-auto">
+    <main className="px-6 pt-32 pb-16 md:px-12 max-w-5xl mx-auto">
       <Reveal className="grid gap-10 md:grid-cols-2 md:items-center">
         <div className="font-body">
           <Eyebrow className="text-[var(--color-cobre-viejo)]">

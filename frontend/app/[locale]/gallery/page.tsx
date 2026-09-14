@@ -12,7 +12,7 @@ export default async function GalleryPage({
   const content = restaurantContent[locale as Locale];
 
   return (
-    <main className="px-6 py-16 md:px-12">
+    <main className="px-6 pt-32 pb-16 md:px-12">
       <RevealStagger className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {content.gallery.map((photo) => (
           <div key={photo.src} className="relative aspect-[4/3]" data-reveal-item>

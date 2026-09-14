@@ -13,7 +13,7 @@ export default async function MenuPage({
   const content = restaurantContent[locale as Locale];
 
   return (
-    <main className="px-6 py-16 md:px-12 max-w-3xl">
+    <main className="px-6 pt-32 pb-16 md:px-12 max-w-3xl">
       <RevealStagger>
         {content.menu.map((category, i) => (
           <section key={category.category} className="mb-12" data-reveal-item>

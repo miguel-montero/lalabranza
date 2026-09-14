@@ -14,7 +14,7 @@ export default async function AboutPage({
   const estatePhoto = content.gallery[3];
 
   return (
-    <main className="px-6 py-16 md:px-12 max-w-5xl mx-auto">
+    <main className="px-6 pt-32 pb-16 md:px-12 max-w-5xl mx-auto">
       <Reveal className="grid gap-10 md:grid-cols-2 md:items-start">
         <div>
           <address className="font-body not-italic">
