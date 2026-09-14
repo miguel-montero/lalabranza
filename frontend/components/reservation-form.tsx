@@ -121,6 +121,7 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
           {dictionary.reservations.dateLabel}
         </label>
         <Input
+          className="h-11"
           id="field-date"
           type="date"
           min={new Date().toISOString().split("T")[0]}
@@ -140,6 +141,7 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
           {dictionary.reservations.timeLabel}
         </label>
         <select
+          className="h-11 w-full rounded-lg border border-input bg-transparent px-2.5 text-base outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 md:text-sm"
           id="field-timeSlot"
           aria-invalid={!!errors.timeSlot}
           aria-describedby={errors.timeSlot ? "field-timeSlot-error" : undefined}
@@ -163,6 +165,7 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
           {dictionary.reservations.partySizeLabel}
         </label>
         <Input
+          className="h-11"
           id="field-partySize"
           type="number"
           min={1}
@@ -183,6 +186,7 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
           {dictionary.reservations.nameLabel}
         </label>
         <Input
+          className="h-11"
           id="field-name"
           aria-invalid={!!errors.name}
           aria-describedby={errors.name ? "field-name-error" : undefined}
@@ -200,6 +204,7 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
           {dictionary.reservations.emailLabel}
         </label>
         <Input
+          className="h-11"
           id="field-email"
           type="email"
           aria-invalid={!!errors.email}
@@ -218,6 +223,7 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
           {dictionary.reservations.phoneLabel}
         </label>
         <Input
+          className="h-11"
           id="field-phone"
           type="tel"
           aria-invalid={!!errors.phone}
@@ -235,10 +241,14 @@ export function ReservationForm({ dictionary }: { dictionary: Dictionary }) {
         <label htmlFor="field-notes" className="block font-label text-sm">
           {dictionary.reservations.notesLabel}
         </label>
-        <textarea id="field-notes" {...register("notes")} />
+        <textarea
+          id="field-notes"
+          className="min-h-24 w-full rounded-lg border border-input bg-transparent px-2.5 py-2 text-base outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 md:text-sm"
+          {...register("notes")}
+        />
       </div>
 
-      <Button type="submit" disabled={isSubmitting}>
+      <Button type="submit" size="lg" className="h-11 px-8" disabled={isSubmitting}>
         {isSubmitting ? dictionary.reservations.submitting : dictionary.reservations.submit}
       </Button>
     </form>
