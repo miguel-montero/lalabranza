@@ -40,13 +40,13 @@
     "emailLabel": "Correo electrónico",
     "phoneLabel": "Teléfono",
     "notesLabel": "Notas (opcional)",
-    "submit": "Solicitar reserva",
+    "submit": "Solicitar tu lugar",
     "submitting": "Enviando…",
     "successTitle": "Solicitud recibida",
     "successBody": "Nos pondremos en contacto en breve para confirmar tu reserva.",
     "errorSummaryTitle": "Hay un problema",
     "noCapacity": "Ese horario está completo — prueba con otro.",
-    "genericError": "Algo salió mal — inténtalo de nuevo o contáctanos directamente."
+    "genericError": "No pudimos enviar tu solicitud. Revisa tu conexión e inténtalo de nuevo, o contáctanos directamente."
   },
   "contact": {
     "eyebrow": "Contáctanos"

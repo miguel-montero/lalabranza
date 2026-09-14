@@ -19,7 +19,7 @@ $password = $body['password'] ?? '';
 
 if (!$username || !$password) {
     http_response_code(422);
-    echo json_encode(['error' => 'username and password are required']);
+    echo json_encode(['error' => 'Username and password are required.']);
     exit;
 }
 

@@ -40,13 +40,13 @@
     "emailLabel": "Email",
     "phoneLabel": "Phone",
     "notesLabel": "Notes (optional)",
-    "submit": "Request reservation",
+    "submit": "Request your seating",
     "submitting": "Requesting…",
     "successTitle": "Request received",
     "successBody": "We'll be in touch shortly to confirm your seating.",
     "errorSummaryTitle": "There is a problem",
     "noCapacity": "That seating is fully booked — try another time.",
-    "genericError": "Something went wrong — please try again or contact us directly."
+    "genericError": "Unable to submit your request. Check your connection and try again, or contact us directly."
   },
   "contact": {
     "eyebrow": "Get in Touch"

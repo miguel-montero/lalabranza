@@ -3,7 +3,7 @@
         'name' => 'lalabranza/backend',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'e0534452f6739db99015d29f1b615bbb115f3a19',
+        'reference' => '4da93af1fb8c01979af6475e4db12bb1c90a2cce',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'lalabranza/backend' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'e0534452f6739db99015d29f1b615bbb115f3a19',
+            'reference' => '4da93af1fb8c01979af6475e4db12bb1c90a2cce',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
