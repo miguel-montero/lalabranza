@@ -8,7 +8,7 @@ import { HeroIntro } from "@/components/hero-intro";
 import { Reveal } from "@/components/reveal";
 import { RevealStagger } from "@/components/reveal-stagger";
 import { HeroShaderCanvas } from "@/components/hero-shader-canvas";
-import { CinematicStorySection } from "@/components/cinematic-story-section";
+import { HeadingReveal } from "@/components/heading-reveal";
 import { RevealImage } from "@/components/reveal-image";
 import { TaglineReveal } from "@/components/tagline-reveal";
 
@@ -64,33 +64,95 @@ export default async function HomePage({
 
       <FurrowDivider />
 
-      <CinematicStorySection
-        title={dict.home.originTitle}
-        body={dict.home.originBody}
-        photo={content.gallery[1]}
-        align="left"
-      />
+      <Reveal>
+        <section className="px-6 py-16 md:px-12 grid gap-10 md:grid-cols-2 md:items-center max-w-5xl mx-auto">
+          <div>
+            <HeadingReveal
+              as="h2"
+              className="font-display text-2xl md:text-3xl"
+              text={dict.home.originTitle}
+            />
+            <p className="font-body mt-4">{dict.home.originBody}</p>
+          </div>
+          <RevealImage className="relative aspect-[4/3] overflow-hidden">
+            <Image
+              src={content.gallery[1].src}
+              alt={content.gallery[1].alt}
+              fill
+              className="object-cover"
+            />
+          </RevealImage>
+        </section>
+      </Reveal>
 
-      <CinematicStorySection
-        title={dict.home.landTitle}
-        body={dict.home.landBody}
-        photo={content.gallery[10]}
-        align="right"
-      />
+      <FurrowDivider />
 
-      <CinematicStorySection
-        title={dict.home.foodTitle}
-        body={dict.home.foodBody}
-        photo={content.gallery[7]}
-        align="left"
-      />
+      <Reveal>
+        <section className="px-6 py-16 md:px-12 grid gap-10 md:grid-cols-2 md:items-center max-w-5xl mx-auto">
+          <RevealImage className="relative aspect-[4/3] overflow-hidden md:order-first">
+            <Image
+              src={content.gallery[10].src}
+              alt={content.gallery[10].alt}
+              fill
+              className="object-cover"
+            />
+          </RevealImage>
+          <div>
+            <HeadingReveal
+              as="h2"
+              className="font-display text-2xl md:text-3xl"
+              text={dict.home.landTitle}
+            />
+            <p className="font-body mt-4">{dict.home.landBody}</p>
+          </div>
+        </section>
+      </Reveal>
 
-      <CinematicStorySection
-        title={dict.home.wineTitle}
-        body={dict.home.wineBody}
-        photo={content.gallery[4]}
-        align="right"
-      />
+      <FurrowDivider />
+
+      <Reveal>
+        <section className="px-6 py-16 md:px-12 grid gap-10 md:grid-cols-2 md:items-center max-w-5xl mx-auto">
+          <div>
+            <HeadingReveal
+              as="h2"
+              className="font-display text-2xl md:text-3xl"
+              text={dict.home.foodTitle}
+            />
+            <p className="font-body mt-4">{dict.home.foodBody}</p>
+          </div>
+          <RevealImage className="relative aspect-[4/3] overflow-hidden">
+            <Image
+              src={content.gallery[7].src}
+              alt={content.gallery[7].alt}
+              fill
+              className="object-cover"
+            />
+          </RevealImage>
+        </section>
+      </Reveal>
+
+      <FurrowDivider />
+
+      <Reveal>
+        <section className="px-6 py-16 md:px-12 grid gap-10 md:grid-cols-2 md:items-center max-w-5xl mx-auto">
+          <RevealImage className="relative aspect-[4/3] overflow-hidden md:order-first">
+            <Image
+              src={content.gallery[4].src}
+              alt={content.gallery[4].alt}
+              fill
+              className="object-cover"
+            />
+          </RevealImage>
+          <div>
+            <HeadingReveal
+              as="h2"
+              className="font-display text-2xl md:text-3xl"
+              text={dict.home.wineTitle}
+            />
+            <p className="font-body mt-4">{dict.home.wineBody}</p>
+          </div>
+        </section>
+      </Reveal>
 
       <FurrowDivider />
 
