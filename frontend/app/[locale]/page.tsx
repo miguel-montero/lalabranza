@@ -8,6 +8,7 @@ import { HeroIntro } from "@/components/hero-intro";
 import { Reveal } from "@/components/reveal";
 import { RevealStagger } from "@/components/reveal-stagger";
 import { HeadingReveal } from "@/components/heading-reveal";
+import { HeroShaderCanvas } from "@/components/hero-shader-canvas";
 
 const CTA_LINK_CLASSES =
   "inline-block mt-6 px-6 py-3 bg-[var(--color-vino-tinto)] text-[var(--color-fibra-cruda)] font-label uppercase tracking-wide";
@@ -23,7 +24,7 @@ export default async function HomePage({
 
   return (
     <main>
-      <section className="relative h-[80vh] min-h-[480px] w-full overflow-hidden">
+      <section className="relative h-screen w-full overflow-hidden">
         <Image
           src={content.heroPhoto.src}
           alt={content.heroPhoto.alt}
@@ -31,16 +32,17 @@ export default async function HomePage({
           priority
           className="object-cover"
         />
+        <HeroShaderCanvas src={content.heroPhoto.src} className="absolute inset-0" />
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-[var(--color-piedra-volcanica)]/85 via-[var(--color-piedra-volcanica)]/25 to-transparent"
+          className="absolute inset-0 bg-gradient-to-t from-[var(--color-piedra-volcanica)]/90 via-[var(--color-piedra-volcanica)]/30 to-transparent"
         />
         <FurrowDivider
           variant="hero"
           className="absolute inset-x-0 bottom-0 pointer-events-none"
         />
         <HeroIntro
-          className="absolute bottom-8 left-6 md:left-12 right-6 md:right-12 text-[var(--color-fibra-cruda)]"
+          className="absolute bottom-12 left-6 md:left-12 right-6 md:right-12 text-[var(--color-fibra-cruda)]"
           eyebrow={dict.home.eyebrow}
           headline={dict.home.headline}
           subhead={dict.home.subhead}

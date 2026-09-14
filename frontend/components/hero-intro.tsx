@@ -72,14 +72,14 @@ export function HeroIntro({
       <div ref={eyebrowRef}>
         <Eyebrow className="text-[var(--color-lana-dorada)]">{eyebrow}</Eyebrow>
       </div>
-      <h1 className="font-display text-4xl md:text-6xl mt-2">
+      <h1 className="font-display text-6xl md:text-8xl lg:text-9xl leading-[0.95] mt-2">
         <span aria-label={headline}>
           <span ref={headlineWordsRef} aria-hidden="true">
             {headlineNodes}
           </span>
         </span>
       </h1>
-      <p ref={subheadRef} className="font-body text-lg mt-2 max-w-md">
+      <p ref={subheadRef} className="font-body text-lg md:text-xl mt-4 max-w-lg">
         {subhead}
       </p>
     </div>
