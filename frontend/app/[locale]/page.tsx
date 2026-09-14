@@ -7,6 +7,7 @@ import { FurrowDivider } from "@/components/furrow-divider";
 import { HeroIntro } from "@/components/hero-intro";
 import { Reveal } from "@/components/reveal";
 import { RevealStagger } from "@/components/reveal-stagger";
+import { HeadingReveal } from "@/components/heading-reveal";
 
 const CTA_LINK_CLASSES =
   "inline-block mt-6 px-6 py-3 bg-[var(--color-vino-tinto)] text-[var(--color-fibra-cruda)] font-label uppercase tracking-wide";
@@ -62,7 +63,11 @@ export default async function HomePage({
       <Reveal>
         <section className="px-6 py-16 md:px-12 grid gap-10 md:grid-cols-2 md:items-center max-w-5xl mx-auto">
           <div>
-            <h2 className="font-display text-2xl md:text-3xl">{dict.home.originTitle}</h2>
+            <HeadingReveal
+              as="h2"
+              className="font-display text-2xl md:text-3xl"
+              text={dict.home.originTitle}
+            />
             <p className="font-body mt-4">{dict.home.originBody}</p>
           </div>
           <div className="relative aspect-[4/3]">
@@ -89,7 +94,11 @@ export default async function HomePage({
             />
           </div>
           <div>
-            <h2 className="font-display text-2xl md:text-3xl">{dict.home.landTitle}</h2>
+            <HeadingReveal
+              as="h2"
+              className="font-display text-2xl md:text-3xl"
+              text={dict.home.landTitle}
+            />
             <p className="font-body mt-4">{dict.home.landBody}</p>
           </div>
         </section>
@@ -100,7 +109,11 @@ export default async function HomePage({
       <Reveal>
         <section className="px-6 py-16 md:px-12 grid gap-10 md:grid-cols-2 md:items-center max-w-5xl mx-auto">
           <div>
-            <h2 className="font-display text-2xl md:text-3xl">{dict.home.foodTitle}</h2>
+            <HeadingReveal
+              as="h2"
+              className="font-display text-2xl md:text-3xl"
+              text={dict.home.foodTitle}
+            />
             <p className="font-body mt-4">{dict.home.foodBody}</p>
           </div>
           <div className="relative aspect-[4/3]">
@@ -127,7 +140,11 @@ export default async function HomePage({
             />
           </div>
           <div>
-            <h2 className="font-display text-2xl md:text-3xl">{dict.home.wineTitle}</h2>
+            <HeadingReveal
+              as="h2"
+              className="font-display text-2xl md:text-3xl"
+              text={dict.home.wineTitle}
+            />
             <p className="font-body mt-4">{dict.home.wineBody}</p>
           </div>
         </section>
@@ -176,7 +193,11 @@ export default async function HomePage({
 
       <Reveal>
         <section className="px-6 py-16 md:px-12 max-w-2xl mx-auto text-center">
-          <h2 className="font-display text-2xl md:text-3xl">{dict.home.closingTitle}</h2>
+          <HeadingReveal
+            as="h2"
+            className="font-display text-2xl md:text-3xl"
+            text={dict.home.closingTitle}
+          />
           <p className="font-body mt-4">{dict.home.closingBody}</p>
           <Link href={`/${locale}/reservations`} className={CTA_LINK_CLASSES}>
             {dict.home.cta}
