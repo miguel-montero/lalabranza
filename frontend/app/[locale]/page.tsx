@@ -7,9 +7,56 @@ import { FurrowDivider } from "@/components/furrow-divider";
 import { HeroIntro } from "@/components/hero-intro";
 import { Reveal } from "@/components/reveal";
 import { RevealStagger } from "@/components/reveal-stagger";
+import { RevealImage } from "@/components/reveal-image";
+import { TaglineReveal } from "@/components/tagline-reveal";
 
 const CTA_LINK_CLASSES =
   "inline-block mt-6 px-6 py-3 bg-[var(--color-vino-tinto)] text-[var(--color-fibra-cruda)] font-label uppercase tracking-wide";
+
+function StorySection({
+  title,
+  body,
+  photo,
+  imageFirst,
+}: {
+  title: string;
+  body: string;
+  photo: { src: string; alt: string };
+  imageFirst: boolean;
+}) {
+  const textBlock = (
+    <RevealStagger className="contents">
+      <div data-reveal-item>
+        <h2 className="font-display text-2xl md:text-3xl">{title}</h2>
+      </div>
+      <div data-reveal-item>
+        <p className="font-body mt-4">{body}</p>
+      </div>
+    </RevealStagger>
+  );
+
+  const imageBlock = (
+    <RevealImage className={`relative aspect-[4/3] overflow-hidden ${imageFirst ? "md:order-first" : ""}`}>
+      <Image src={photo.src} alt={photo.alt} fill className="object-cover" />
+    </RevealImage>
+  );
+
+  return (
+    <section className="px-6 py-16 md:px-12 grid gap-10 md:grid-cols-2 md:items-center max-w-5xl mx-auto">
+      {imageFirst ? (
+        <>
+          {imageBlock}
+          <div>{textBlock}</div>
+        </>
+      ) : (
+        <>
+          <div>{textBlock}</div>
+          {imageBlock}
+        </>
+      )}
+    </section>
+  );
+}
 
 export default async function HomePage({
   params,
@@ -49,26 +96,17 @@ export default async function HomePage({
       <FurrowDivider />
 
       <Reveal>
-        <section className="px-6 py-16 md:px-12 max-w-3xl mx-auto text-center">
-          <p className="font-body text-lg">{dict.home.valueProp}</p>
-          <Link href={`/${locale}/reservations`} className={CTA_LINK_CLASSES}>
-            {dict.home.cta}
-          </Link>
-        </section>
-      </Reveal>
-
-      <FurrowDivider />
-
-      <Reveal>
-        <section className="px-6 py-16 md:px-12 grid gap-10 md:grid-cols-2 md:items-center max-w-5xl mx-auto">
-          <div>
-            <h2 className="font-display text-2xl md:text-3xl">{dict.home.originTitle}</h2>
-            <p className="font-body mt-4">{dict.home.originBody}</p>
+        <section className="px-6 py-16 md:px-12 max-w-5xl mx-auto grid gap-10 md:grid-cols-2 md:items-center">
+          <div className="text-center md:text-left">
+            <p className="font-body text-lg">{dict.home.valueProp}</p>
+            <Link href={`/${locale}/reservations`} className={CTA_LINK_CLASSES}>
+              {dict.home.cta}
+            </Link>
           </div>
-          <div className="relative aspect-[4/3]">
+          <div className="relative aspect-[4/3] overflow-hidden">
             <Image
-              src={content.gallery[1].src}
-              alt={content.gallery[1].alt}
+              src={content.gallery[6].src}
+              alt={content.gallery[6].alt}
               fill
               className="object-cover"
             />
@@ -78,60 +116,39 @@ export default async function HomePage({
 
       <FurrowDivider />
 
-      <Reveal>
-        <section className="px-6 py-16 md:px-12 grid gap-10 md:grid-cols-2 md:items-center max-w-5xl mx-auto">
-          <div className="relative aspect-[4/3] md:order-first">
-            <Image
-              src={content.gallery[2].src}
-              alt={content.gallery[2].alt}
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <h2 className="font-display text-2xl md:text-3xl">{dict.home.landTitle}</h2>
-            <p className="font-body mt-4">{dict.home.landBody}</p>
-          </div>
-        </section>
-      </Reveal>
+      <StorySection
+        title={dict.home.originTitle}
+        body={dict.home.originBody}
+        photo={content.gallery[1]}
+        imageFirst={false}
+      />
 
       <FurrowDivider />
 
-      <Reveal>
-        <section className="px-6 py-16 md:px-12 grid gap-10 md:grid-cols-2 md:items-center max-w-5xl mx-auto">
-          <div>
-            <h2 className="font-display text-2xl md:text-3xl">{dict.home.foodTitle}</h2>
-            <p className="font-body mt-4">{dict.home.foodBody}</p>
-          </div>
-          <div className="relative aspect-[4/3]">
-            <Image
-              src={content.gallery[0].src}
-              alt={content.gallery[0].alt}
-              fill
-              className="object-cover"
-            />
-          </div>
-        </section>
-      </Reveal>
+      <StorySection
+        title={dict.home.landTitle}
+        body={dict.home.landBody}
+        photo={content.gallery[10]}
+        imageFirst={true}
+      />
 
       <FurrowDivider />
 
-      <Reveal>
-        <section className="px-6 py-16 md:px-12 grid gap-10 md:grid-cols-2 md:items-center max-w-5xl mx-auto">
-          <div className="relative aspect-[4/3] md:order-first">
-            <Image
-              src={content.gallery[4].src}
-              alt={content.gallery[4].alt}
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <h2 className="font-display text-2xl md:text-3xl">{dict.home.wineTitle}</h2>
-            <p className="font-body mt-4">{dict.home.wineBody}</p>
-          </div>
-        </section>
-      </Reveal>
+      <StorySection
+        title={dict.home.foodTitle}
+        body={dict.home.foodBody}
+        photo={content.gallery[7]}
+        imageFirst={false}
+      />
+
+      <FurrowDivider />
+
+      <StorySection
+        title={dict.home.wineTitle}
+        body={dict.home.wineBody}
+        photo={content.gallery[4]}
+        imageFirst={true}
+      />
 
       <FurrowDivider />
 
@@ -139,12 +156,25 @@ export default async function HomePage({
         <Eyebrow className="text-[var(--color-cobre-viejo)]">
           {dict.home.atmosphereEyebrow}
         </Eyebrow>
-        <RevealStagger className="mt-6 grid gap-8 sm:grid-cols-3">
-          {[content.gallery[3], content.gallery[5], content.gallery[1]].map((photo) => (
-            <div key={photo.src} className="relative aspect-square" data-reveal-item>
-              <Image src={photo.src} alt={photo.alt} fill className="object-cover" />
-            </div>
-          ))}
+        <RevealStagger className="mt-6 grid grid-cols-2 md:grid-cols-3 grid-flow-dense gap-4 auto-rows-[minmax(0,1fr)]">
+          <div
+            className="relative row-span-2 aspect-[3/4] md:aspect-auto"
+            data-reveal-item
+          >
+            <Image
+              src={content.gallery[8].src}
+              alt={content.gallery[8].alt}
+              fill
+              className="object-cover"
+            />
+          </div>
+          {[content.gallery[9], content.gallery[3], content.gallery[5], content.gallery[0]].map(
+            (photo) => (
+              <div key={photo.src} className="relative aspect-square" data-reveal-item>
+                <Image src={photo.src} alt={photo.alt} fill className="object-cover" />
+              </div>
+            ),
+          )}
         </RevealStagger>
         <Link
           href={`/${locale}/gallery`}
@@ -174,15 +204,20 @@ export default async function HomePage({
 
       <FurrowDivider />
 
-      <Reveal>
-        <section className="px-6 py-16 md:px-12 max-w-2xl mx-auto text-center">
-          <h2 className="font-display text-2xl md:text-3xl">{dict.home.closingTitle}</h2>
-          <p className="font-body mt-4">{dict.home.closingBody}</p>
-          <Link href={`/${locale}/reservations`} className={CTA_LINK_CLASSES}>
-            {dict.home.cta}
-          </Link>
-        </section>
-      </Reveal>
+      <section className="px-6 py-24 md:px-12 max-w-2xl mx-auto text-center">
+        <TaglineReveal
+          text={dict.home.closingTitle}
+          className="font-display text-3xl md:text-5xl text-[var(--color-piedra-volcanica)]"
+        />
+        <Reveal>
+          <div>
+            <p className="font-body mt-6">{dict.home.closingBody}</p>
+            <Link href={`/${locale}/reservations`} className={CTA_LINK_CLASSES}>
+              {dict.home.cta}
+            </Link>
+          </div>
+        </Reveal>
+      </section>
     </main>
   );
 }
